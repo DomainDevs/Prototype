@@ -1,0 +1,12 @@
+{
+  "SecuritySettings": {
+    "Provider": "Jwt",
+    "RequireConfirmedAccount": true,
+    "JwtSettings": {
+      "key": "MySecretKeyforapp12",
+      "Subject": "baseWebApiSubject",
+      "Issuer": "https://localhost:7200/",
+      "Audience": "https://localhost:7200/"
+    }
+  }
+}
