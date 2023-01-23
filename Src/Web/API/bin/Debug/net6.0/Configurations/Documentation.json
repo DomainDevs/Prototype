@@ -1,11 +1,12 @@
 {
+  "DocumentationEnabled": true,
   "SwaggerSettings": {
     "Enable": true,
     "Title": "RealState WebSite",
     "Version1": "v1",
     "Version2": "v2",
-    "Description": "Clean Architecture Template for .NET 6.0 WebApi built with Multitenancy Support.",
-    "Contact": "Mukesh Murugan",
-    "ContactEmail": "hello@codewithmukesh.com"
+    "Description": "",
+    "Contact": "Fernando Poveda",
+    "ContactEmail": "dddd@gmail.com"
   }
 }

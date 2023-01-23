@@ -5,7 +5,6 @@ using Serilog;
 using Prototype.Application;
 using API.Conventions;
 
-
 StaticLogger.EnsureInitialized();
 Log.Information("Server Booting Up...");
 try
@@ -18,7 +17,6 @@ try
         config.WriteTo.Console()
         .ReadFrom.Configuration(builder.Configuration);
     });
-    
     
     builder.Services.AddControllers(options =>
     {

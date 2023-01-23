@@ -34,7 +34,7 @@ public class JwtSettings
             {
                 success = true,
                 message = "exito",
-                result = "Juan" //usuario
+                result = "usuario" //usuario
             };
         }
         catch (Exception ex)

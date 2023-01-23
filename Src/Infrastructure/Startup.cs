@@ -11,14 +11,17 @@ namespace Prototype.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
         {
+            if (Convert.ToBoolean(config.GetSection("DocumentationEnabled").Value))
+                services.AddOpenApiDocumentation(config);
 
             return services
-                .AddOpenApiDocumentation(config)
-                .AddAuth(config)
-                .AddCorsPolicy(config);
+            .AddAuth(config)
+            .AddLocalization()
+            .AddCorsPolicy(config);
         }
 
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder builder, IConfiguration config) =>
+
 
             builder
                 .UseOpenApiDocumentation(config)
