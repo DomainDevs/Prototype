@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "Persistence\\Repositories\\ClienteRepository.cs",
               "ToolTip": "C:\\Devs\\Core\\Empresa\\SolucionFinal\\Prototype\\Persistence\\Repositories\\ClienteRepository.cs",
               "RelativeToolTip": "Persistence\\Repositories\\ClienteRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAuwDEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-12T02:53:50.564Z",
               "EditorCaption": ""
@@ -83,8 +83,7 @@
               "RelativeToolTip": "Core\\Domain\\Entities\\Cliente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T02:51:19.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-12T02:51:19.071Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "Web\\API\\API\\Configurations\\middleware.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-10T01:25:44.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-10T01:25:44.253Z"
             },
             {
               "$type": "Document",

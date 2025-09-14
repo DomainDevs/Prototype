@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Libs\datatoolkitv2\DataToolkit.Library\DataToolkit.Library.csproj" />
     <ProjectReference Include="..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\Core\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Libs\datatoolkitv2\DataToolkit.Library\DataToolkit.Library.csproj" />
   </ItemGroup>
 
 </Project>
