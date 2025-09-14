@@ -1,0 +1,9 @@
+{
+  "ConnectionStrings": {
+    "SqlServer": "Server=localhost;Database=PRUEBAS;User Id=sqluser;Password=skf9nfi7;Pooling=true;Min Pool Size=3;Max Pool Size=30;Connection Timeout=15;APP=LIB;Language=us_english;Encrypt=True;TrustServerCertificate=True",
+    "Sybase": "Server=10.40.10.69;Port=9100;;Database=generales;User ID=dariopoveda;Password=UgiKxjiD*;"
+  },
+  "DatabaseProviders": {
+    "SqlServer": "SqlServer"
+  }
+}

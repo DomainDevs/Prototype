@@ -1,0 +1,19 @@
+﻿{
+  "Serilog": {
+    "Properties": {
+      "Application": "PrototypeAPI"
+    },
+    "WriteTo": [
+      {
+        "Args": {
+          "path": "Logs/logs.json",
+          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Information",
+          "retainedFileCountLimit": 5
+        },
+        "Name": "File"
+      }
+    ]
+  }
+}
