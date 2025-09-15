@@ -1,10 +1,13 @@
-﻿
+﻿// Persistence/Repositories/ClienteRepository.cs
 using DataToolkit.Library.UnitOfWorkLayer;
 using Domain.Entities;
+using Domain.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-    public class ClienteRepository : Domain.Interfaces.IClienteRepository
+    public class ClienteRepository : IClienteRepository
     {
         private readonly IUnitOfWork _uow;
 
@@ -13,9 +16,16 @@ namespace Persistence.Repositories
             _uow = uow;
         }
 
+        public Task<IEnumerable<Cliente>> GetAllAsync()
+        {
+            var repo = _uow.GetRepository<Cliente>();
+            return repo.GetAllAsync();
+        }
+
         public async Task<Cliente?> GetByIdAsync(int id)
         {
             var repo = _uow.GetRepository<Cliente>();
+            // tu GenericRepository GetByIdAsync espera una entidad posiblemente; ajusta según tu impl
             return await repo.GetByIdAsync(new Cliente { Id = id });
         }
 
@@ -24,7 +34,24 @@ namespace Persistence.Repositories
             var repo = _uow.GetRepository<Cliente>();
             var result = await repo.InsertAsync(cliente);
 
-            _uow.Commit(); // ✅ tu implementación es sincrónica
+            // tu UnitOfWork es síncrono en Commit
+            _uow.Commit();
+            return result;
+        }
+
+        public async Task<int> UpdateAsync(Cliente cliente)
+        {
+            var repo = _uow.GetRepository<Cliente>();
+            var result = await repo.UpdateAsync(cliente);
+            _uow.Commit();
+            return result;
+        }
+
+        public async Task<int> DeleteAsync(Cliente cliente)
+        {
+            var repo = _uow.GetRepository<Cliente>();
+            var result = await repo.DeleteAsync(cliente);
+            _uow.Commit();
             return result;
         }
     }
