@@ -7,36 +7,16 @@
       "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\repositories\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\domain\\interfaces\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|solutionrelative:core\\domain\\interfaces\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\clientes\\handlers\\getclientebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\clientes\\handlers\\getclientebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\domain\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|solutionrelative:core\\domain\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\clientes\\queries\\getclientebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\clientes\\queries\\getclientebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\persistence\\repositories\\addconfigurerepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\repositories\\addconfigurerepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\clientes\\commands\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\clientes\\commands\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\libs\\datatoolkitv2\\datatoolkit.library\\unitofworklayer\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|solutionrelative:libs\\datatoolkitv2\\datatoolkit.library\\unitofworklayer\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\libs\\datatoolkitv2\\datatoolkit.library\\unitofworklayer\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|solutionrelative:libs\\datatoolkitv2\\datatoolkit.library\\unitofworklayer\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\persistence\\persistence.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\persistence.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\dtos\\clienterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\dtos\\clienterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,34 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IClienteRepository.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Interfaces\\IClienteRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Domain\\Interfaces\\IClienteRepository.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Interfaces\\IClienteRepository.cs",
-              "RelativeToolTip": "Core\\Domain\\Interfaces\\IClienteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T01:36:18.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AddConfigureRepositories.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "RelativeDocumentMoniker": "Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "RelativeToolTip": "Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T01:31:53.674Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -82,87 +36,48 @@
               "RelativeDocumentMoniker": "Persistence\\Repositories\\ClienteRepository.cs",
               "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\ClienteRepository.cs",
               "RelativeToolTip": "Persistence\\Repositories\\ClienteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T23:04:30.043Z",
+              "WhenOpened": "2025-09-15T02:38:41.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetClienteByIdHandler.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Handlers\\GetClienteByIdHandler.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Clientes\\Handlers\\GetClienteByIdHandler.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Handlers\\GetClienteByIdHandler.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Clientes\\Handlers\\GetClienteByIdHandler.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Entities\\Cliente.cs",
+              "RelativeDocumentMoniker": "Core\\Domain\\Entities\\Cliente.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Entities\\Cliente.cs",
+              "RelativeToolTip": "Core\\Domain\\Entities\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T21:52:48.154Z",
+              "WhenOpened": "2025-09-15T02:36:36.992Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GetClienteByIdQuery.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Queries\\GetClienteByIdQuery.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Clientes\\Queries\\GetClienteByIdQuery.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Queries\\GetClienteByIdQuery.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Clientes\\Queries\\GetClienteByIdQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Title": "ClienteRequestDto.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\DTOs\\ClienteRequestDto.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\DTOs\\ClienteRequestDto.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\DTOs\\ClienteRequestDto.cs",
+              "RelativeToolTip": "Core\\Application\\DTOs\\ClienteRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T21:52:21.323Z",
+              "WhenOpened": "2025-09-15T02:36:23.765Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateClienteCommand.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Commands\\CreateClienteCommand.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Clientes\\Commands\\CreateClienteCommand.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Clientes\\Commands\\CreateClienteCommand.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Clientes\\Commands\\CreateClienteCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABPAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ClientesController.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
+              "RelativeDocumentMoniker": "Web\\API\\Controllers\\ClientesController.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
+              "RelativeToolTip": "Web\\API\\Controllers\\ClientesController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAwBQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T21:35:37.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Persistence",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Persistence.csproj",
-              "RelativeDocumentMoniker": "Persistence\\Persistence.csproj",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Persistence.csproj",
-              "RelativeToolTip": "Persistence\\Persistence.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-14T22:08:51.237Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\UnitOfWork.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\UnitOfWork.cs",
-              "RelativeToolTip": "Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\UnitOfWork.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T00:46:33.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\IUnitOfWork.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\IUnitOfWork.cs",
-              "RelativeToolTip": "Libs\\datatoolkitv2\\DataToolkit.Library\\UnitOfWorkLayer\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T00:47:11.315Z",
+              "WhenOpened": "2025-09-15T02:34:47.223Z",
               "EditorCaption": ""
             }
           ]

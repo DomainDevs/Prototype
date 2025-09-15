@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿// Application/Features/Clientes/Handlers/GetClienteByIdHandler.cs
+using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Features.Clientes.Queries;
@@ -7,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.Clientes.Handlers
 {
-    public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, ClienteRequestDto>
+    public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, ClienteRequestDto?>
     {
         private readonly IClienteRepository _repo;
 
@@ -16,18 +17,17 @@ namespace Application.Features.Clientes.Handlers
             _repo = repo;
         }
 
-        public async Task<ClienteRequestDto> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ClienteRequestDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
         {
             var entity = await _repo.GetByIdAsync(request.Id);
-
-            if (entity is null)
-                return null;
+            if (entity is null) return null;
 
             return new ClienteRequestDto
             {
                 Id = entity.Id,
                 Nombre = entity.Nombre,
-                Apellido = entity.Apellido
+                Apellido = entity.Apellido,
+                Email = entity.Email
             };
         }
     }

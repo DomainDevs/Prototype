@@ -1,6 +1,7 @@
 ﻿
 using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Application.DTOs
 {
@@ -19,6 +20,10 @@ namespace Application.DTOs
         [JsonPropertyName("Apellido")]
         [StringLength(50)]
         public string Apellido { get; set; }
+
+        [JsonPropertyName("Email")]
+        [StringLength(50)]
+        public string Email { get; set; }
 
     }
 }
