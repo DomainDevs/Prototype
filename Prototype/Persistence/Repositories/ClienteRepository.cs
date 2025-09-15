@@ -1,49 +1,30 @@
-﻿using DataToolkit.Library.Repositories;
-using Domain.Entities;
+﻿
 using DataToolkit.Library.UnitOfWorkLayer;
-using System.Linq.Expressions;
-using Interfaces = Domain.Interfaces;
-
+using Domain.Entities;
 
 namespace Persistence.Repositories
 {
-    public class ClienteRepository : Interfaces.IClienteRepository
+    public class ClienteRepository : Domain.Interfaces.IClienteRepository
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private IGenericRepository<Cliente> Repo => _unitOfWork.GetRepository<Cliente>();
+        private readonly IUnitOfWork _uow;
 
-        public bool AutoCommit { get; set; } = true;
-
-        public ClienteRepository(IUnitOfWork unitOfWork)
+        public ClienteRepository(IUnitOfWork uow)
         {
-            _unitOfWork = unitOfWork;
+            _uow = uow;
         }
 
-        public Task<IEnumerable<Cliente>> GetAllAsync() => Repo.GetAllAsync();
-
-        public Task<Cliente?> GetByIdAsync(Cliente entity)
+        public async Task<Cliente?> GetByIdAsync(int id)
         {
-            return Repo.GetByIdAsync(entity);
+            var repo = _uow.GetRepository<Cliente>();
+            return await repo.GetByIdAsync(new Cliente { Id = id });
         }
 
-        public async Task<int> InsertAsync(Cliente entity)
+        public async Task<int> InsertAsync(Cliente cliente)
         {
-            var result = await Repo.InsertAsync(entity);
-            if (AutoCommit) _unitOfWork.Commit();
-            return result;
-        }
+            var repo = _uow.GetRepository<Cliente>();
+            var result = await repo.InsertAsync(cliente);
 
-        public async Task<int> UpdateAsync(Cliente entity, Expression<Func<Cliente, object>>? includeProperties = null)
-        {
-            var result = await Repo.UpdateAsync(entity, includeProperties);
-            if (AutoCommit) _unitOfWork.Commit();
-            return result;
-        }
-
-        public async Task<int> DeleteAsync(Cliente entity)
-        {
-            var result = await Repo.DeleteAsync(entity);
-            if (AutoCommit) _unitOfWork.Commit();
+            _uow.Commit(); // ✅ tu implementación es sincrónica
             return result;
         }
     }
