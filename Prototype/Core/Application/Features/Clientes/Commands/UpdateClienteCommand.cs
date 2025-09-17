@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Clientes.Commands;
 
-public record UpdateClienteCommand(int Id, string Nombre, string Apellido, string Email) : IRequest<bool>;
+public record UpdateClienteCommand(int Id, string? Nombre = null, string? Apellido = null, string? Email = null) : IRequest<bool>;

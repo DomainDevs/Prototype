@@ -27,10 +27,9 @@ namespace Domain.Entities
         public string Apellido { get; set; }
 
         // Email
-        [Required]
         [Column("Email")]
         [MaxLength(50)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
     }
 }

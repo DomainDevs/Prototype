@@ -23,7 +23,7 @@ namespace Application.DTOs
 
         [JsonPropertyName("Email")]
         [StringLength(50)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
     }
 }

@@ -1,9 +1,8 @@
-﻿// Persistence/Repositories/ClienteRepository.cs
+﻿using Domain.Common; // ✅ nuevo
+using DataToolkit.Library.Repositories;
 using DataToolkit.Library.UnitOfWorkLayer;
 using Domain.Entities;
 using Domain.Interfaces;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
@@ -25,7 +24,6 @@ namespace Persistence.Repositories
         public async Task<Cliente?> GetByIdAsync(int id)
         {
             var repo = _uow.GetRepository<Cliente>();
-            // tu GenericRepository GetByIdAsync espera una entidad posiblemente; ajusta según tu impl
             return await repo.GetByIdAsync(new Cliente { Id = id });
         }
 
@@ -33,16 +31,17 @@ namespace Persistence.Repositories
         {
             var repo = _uow.GetRepository<Cliente>();
             var result = await repo.InsertAsync(cliente);
-
-            // tu UnitOfWork es síncrono en Commit
             _uow.Commit();
             return result;
         }
 
-        public async Task<int> UpdateAsync(Cliente cliente)
+        public async Task<int> UpdateAsync(
+            Cliente cliente,
+            Action<IUpdateBuilder<Cliente>>? configure = null
+        )
         {
             var repo = _uow.GetRepository<Cliente>();
-            var result = await repo.UpdateAsync(cliente);
+            var result = await repo.UpdateAsync(cliente, configure);
             _uow.Commit();
             return result;
         }
