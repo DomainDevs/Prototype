@@ -1,4 +1,5 @@
 ﻿
+using Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

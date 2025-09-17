@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Domain.Interfaces;
-using DTRepo = DataToolkit.Library.Repositories; //Alias para no generar conflicto GenericRepository
 
 namespace Persistence.Repositories;
 
@@ -13,15 +12,9 @@ internal static class AddConfigureRepositories
     internal static IServiceCollection AddRepositories(this IServiceCollection services)
     {
 
-        // Registramos el GenericRepositoryAdapter<T>
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositoryAdapter<>));
-        // Registramos también el repo real de DataToolkit
-        services.AddScoped(typeof(DTRepo.IGenericRepository<>), typeof(DTRepo.GenericRepository<>));
-
         //registra implementaciones concretas
         services.AddScoped<IPropertyRepository, PropertyRepository>();
         services.AddScoped<IClienteRepository, ClienteRepository>();
-
 
 
         return services;

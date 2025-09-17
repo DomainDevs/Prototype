@@ -11,15 +11,15 @@
         {
             host.ConfigureAppConfiguration((hostingContext, config) =>
             {
-                var env = hostingContext.HostingEnvironment;
-                var directory = new DirectoryInfo(ConfigDirectory);
+                IHostEnvironment env = hostingContext.HostingEnvironment;
+                DirectoryInfo directory = new DirectoryInfo(ConfigDirectory);
 
                 if (directory.Exists)
                 {
-                    foreach (var file in directory.EnumerateFiles("*.json"))
+                    foreach (FileInfo file in directory.EnumerateFiles("*.json"))
                     {
-                        var baseName = Path.GetFileNameWithoutExtension(file.Name);
-                        var extension = Path.GetExtension(file.Name);
+                        string baseName = Path.GetFileNameWithoutExtension(file.Name);
+                        string extension = Path.GetExtension(file.Name);
 
                         // archivo base
                         config.AddJsonFile(

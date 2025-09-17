@@ -1,4 +1,6 @@
 ﻿using DataToolkit.Library.Sql;
+using Domain.Entities;
+using Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.DataToolkit;

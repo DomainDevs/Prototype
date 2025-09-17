@@ -10,7 +10,6 @@ try
 
     builder.Host.AddConfigurations();                           //Cargar archivos de configuración json
 
-
     builder.Services.AddControllers();                          //Cargar controllers
     builder.Services.AddInfrastructure(builder.Configuration);  //Inyectar capa infraestructura
     builder.Services.AddPersistence(builder.Configuration);     //Inyectar capa persistencia

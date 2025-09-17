@@ -1,4 +1,5 @@
 ﻿// WebApi/Controllers/ClientesController.cs
+using Application.Clientes.Commands;
 using Application.DTOs;
 using Application.Features.Clientes.Commands;
 using Application.Features.Clientes.Queries;
@@ -32,5 +33,19 @@ namespace API.Controllers
             var id = await _mediator.Send(new CreateClienteCommand(dto.Nombre, dto.Apellido, dto.Email));
             return CreatedAtAction(nameof(GetById), new { id }, new { id });
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateClienteCommand command)
+        {
+            if (id != command.Id)
+                return BadRequest("El id de la URL no coincide con el del body.");
+
+            var result = await _mediator.Send(command);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
+        }
+
     }
 }
