@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Features.Clientes.Queries;
+using Application.Mappers;
 using Domain.Interfaces;
 using MediatR;
 
@@ -23,15 +24,11 @@ namespace Application.Features.Clientes.Handlers
             var clientes = await _repo.GetAllAsync();
             var entity = clientes.FirstOrDefault(c => c.Id == request.Id);
 
-            if (entity is null) return null;
+            //if (entity is null) return null;
+            //return ClienteMapper.ToDto(entity);
 
-            return new ClienteRequestDto
-            {
-                Id = entity.Id,
-                Nombre = entity.Nombre,
-                Apellido = entity.Apellido,
-                Email = entity.Email
-            };
+            return (entity is null) ? null : ClienteMapper.ToDto(entity);
+
         }
     }
 }

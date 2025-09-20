@@ -15,16 +15,7 @@ public class UpdateClienteHandler : IRequestHandler<UpdateClienteCommand, int>
 
     public async Task<int> Handle(UpdateClienteCommand request, CancellationToken cancellationToken)
     {
-        // Convertimos directamente el record UpdateClienteCommand a la entidad
-        var entity = new Cliente
-        {
-            Id = request.Id,
-            Nombre = request.Nombre,
-            Apellido = request.Apellido,
-            Email = request.Email
-        };
-
-        // Actualizamos solo los campos que se desean
+        var entity = ClienteMapper.ToEntity(request); // Commands → Entity
         return await _repo.UpdateAsync(entity, c => c.Nombre, c => c.Apellido, c => c.Email);
     }
 }

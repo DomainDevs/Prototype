@@ -1,4 +1,5 @@
 ﻿using Application.Features.Clientes.Commands;
+using Application.Mappers;
 using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
@@ -14,13 +15,7 @@ public class CreateClienteHandler : IRequestHandler<CreateClienteCommand, int>
 
     public async Task<int> Handle(CreateClienteCommand request, CancellationToken cancellationToken)
     {
-        var cliente = new Cliente
-        {
-            Nombre = request.Nombre,
-            Apellido = request.Apellido,
-            Email = request.Email
-        };
-
+        var cliente = ClienteMapper.ToEntity(request); // Commands → Entity
         return await _clienteRepository.InsertAsync(cliente);
     }
 }

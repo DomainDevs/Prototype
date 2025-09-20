@@ -2,9 +2,4 @@
 using Application.DTOs;
 using MediatR;
 
-public record UpdateClienteCommand(
-    int Id,          // Coincide con DTO.Id
-    string Nombre,
-    string Apellido,
-    string? Email
-) : IRequest<int>;
+public record UpdateClienteCommand(int Id, string Nombre, string Apellido, string? Email) : IRequest<int>;

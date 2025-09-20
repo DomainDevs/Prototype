@@ -4,20 +4,23 @@
 // =========================================================
 
 using Application.DTOs;
+using Application.Features.Clientes.Commands;
 using Domain.Entities;
 using Riok.Mapperly.Abstractions;
 
 namespace Application.Mappers;
 
-public static class ClienteCommandMapper
+[Mapper]
+public static partial class ClienteMapper
 {
-    public static UpdateClienteCommand ToCommand(this ClienteRequestDto dto)
-    {
-        return new UpdateClienteCommand(
-            dto.Id,
-            dto.Nombre,
-            dto.Apellido,
-            dto.Email
-        );
-    }
+    // DTO → Commands
+    public static partial UpdateClienteCommand ToUpdateCommand(this ClienteRequestDto dto);
+    public static partial CreateClienteCommand ToCommandCreate(this ClienteRequestDto dto);
+
+    // Commands → Entity
+    public static partial Cliente ToEntity(CreateClienteCommand command);
+    public static partial Cliente ToEntity(UpdateClienteCommand command);
+
+    //entity  → Dto
+    public static partial ClienteRequestDto ToDto(Cliente entity);
 }
