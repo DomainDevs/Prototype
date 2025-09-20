@@ -1,14 +1,10 @@
-﻿// Application/Features/Clientes/Handlers/GetClienteByIdHandler.cs
-// Application/Features/Clientes/Handlers/GetClienteByIdHandler.cs
-using System.Threading;
-using System.Threading.Tasks;
-using Application.DTOs;
-using Application.Features.Clientes.Queries;
+﻿using Application.DTOs;
+using Application.Features.Cliente.Queries;
 using Application.Mappers;
 using Domain.Interfaces;
 using MediatR;
 
-namespace Application.Features.Clientes.Handlers
+namespace Application.Features.Cliente.Handlers
 {
     public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, ClienteRequestDto?>
     {
@@ -21,8 +17,8 @@ namespace Application.Features.Clientes.Handlers
 
         public async Task<ClienteRequestDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
         {
-            var clientes = await _repo.GetAllAsync();
-            var entity = clientes.FirstOrDefault(c => c.Id == request.Id);
+            var cliente = await _repo.GetAllAsync();
+            var entity = cliente.FirstOrDefault(c => c.Id == request.Id);
 
             if (entity is null) return null;
 

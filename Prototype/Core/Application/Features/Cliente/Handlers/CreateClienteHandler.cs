@@ -1,6 +1,5 @@
-﻿using Application.Features.Clientes.Commands;
+﻿using Application.Features.Cliente.Commands;
 using Application.Mappers;
-using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
 

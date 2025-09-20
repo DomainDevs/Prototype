@@ -1,6 +1,6 @@
 ﻿using Application.DTOs;
-using Application.Features.Clientes.Commands;
-using Application.Features.Clientes.Queries;
+using Application.Features.Cliente.Commands;
+using Application.Features.Cliente.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Mappers;

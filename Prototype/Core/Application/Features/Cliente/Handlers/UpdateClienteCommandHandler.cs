@@ -1,10 +1,9 @@
-﻿using Application.Features.Clientes.Commands;
+﻿using Application.Features.Cliente.Commands;
 using Application.Mappers;
-using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
 
-namespace Application.Features.Clientes.Handlers;
+namespace Application.Features.Cliente.Handlers;
 
 public class UpdateClienteHandler : IRequestHandler<UpdateClienteCommand, int>
 {

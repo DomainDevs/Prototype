@@ -4,7 +4,7 @@
 // =========================================================
 
 using Application.DTOs;
-using Application.Features.Clientes.Commands;
+using Application.Features.Cliente.Commands;
 using Domain.Entities;
 using Riok.Mapperly.Abstractions;
 
@@ -21,6 +21,6 @@ public static partial class ClienteMapper
     public static partial Cliente ToEntity(CreateClienteCommand command);
     public static partial Cliente ToEntity(UpdateClienteCommand command);
 
-    //entity  → Dto
+    // Entity → DTO
     public static partial ClienteRequestDto ToDto(Cliente entity);
 }

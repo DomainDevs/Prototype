@@ -1,7 +1,7 @@
 ﻿using Application.DTOs;
 using MediatR;
 
-namespace Application.Features.Clientes.Queries
+namespace Application.Features.Cliente.Queries
 {
     public record GetClienteByIdQuery(int Id) : IRequest<ClienteRequestDto>;
 }
