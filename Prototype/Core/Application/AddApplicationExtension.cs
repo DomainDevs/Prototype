@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using FluentValidation;
 
 namespace Application;
 
@@ -17,7 +18,8 @@ public static class AddApplicationExtension
             cfg.RegisterServicesFromAssembly(assembly));
 
         // Aquí podrías agregar FluentValidation si lo usas
-        // services.AddValidatorsFromAssembly(assembly);
+        //services.AddValidatorsFromAssembly(assembly);
+
 
         return services;
 
