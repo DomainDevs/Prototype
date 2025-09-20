@@ -24,10 +24,9 @@ namespace Application.Features.Clientes.Handlers
             var clientes = await _repo.GetAllAsync();
             var entity = clientes.FirstOrDefault(c => c.Id == request.Id);
 
-            //if (entity is null) return null;
-            //return ClienteMapper.ToDto(entity);
+            if (entity is null) return null;
 
-            return (entity is null) ? null : ClienteMapper.ToDto(entity);
+            return ClienteMapper.ToDto(entity); //entity  → Dto
 
         }
     }
