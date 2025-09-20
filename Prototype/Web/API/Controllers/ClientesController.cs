@@ -41,7 +41,7 @@ namespace API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var command = dto.ToCommandCreate();
+            var command = dto.ToCommandCreate(); //dto -> command
             var newId = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = newId }, new { id = newId });
@@ -56,7 +56,7 @@ namespace API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var command = dto.ToUpdateCommand();
+            var command = dto.ToUpdateCommand(); //dto -> command
             var updatedId = await _mediator.Send(command);
 
             if (updatedId == 0)
