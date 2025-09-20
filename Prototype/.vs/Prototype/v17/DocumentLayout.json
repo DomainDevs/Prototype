@@ -3,24 +3,48 @@
   "WorkspaceRootPath": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\persistence\\repositories\\addconfigurerepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\repositories\\addconfigurerepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\persistence\\repositories\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\repositories\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\mappers\\clientemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\mappers\\clientemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\domain\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABEC1D9-B8D8-40C2-BC49-190FF57ADD55}|Core\\Domain\\Domain.csproj|solutionrelative:core\\domain\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\update\\updateclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\update\\updateclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\dtos\\clienterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\dtos\\clienterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\update\\updateclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\update\\updateclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\delete\\deleteclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\delete\\deleteclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\queries\\getclientebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\queries\\getclientebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\queries\\getclientebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\queries\\getclientebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddConfigureRepositories.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "RelativeDocumentMoniker": "Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "RelativeToolTip": "Persistence\\Repositories\\AddConfigureRepositories.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "CreateClienteValidator.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T03:02:49.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClienteRepository.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\ClienteRepository.cs",
-              "RelativeDocumentMoniker": "Persistence\\Repositories\\ClienteRepository.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Persistence\\Repositories\\ClienteRepository.cs",
-              "RelativeToolTip": "Persistence\\Repositories\\ClienteRepository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T02:38:41.773Z",
+              "WhenOpened": "2025-09-20T15:37:03.387Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Entities\\Cliente.cs",
-              "RelativeDocumentMoniker": "Core\\Domain\\Entities\\Cliente.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Domain\\Entities\\Cliente.cs",
-              "RelativeToolTip": "Core\\Domain\\Entities\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAATAAAAAAAAAA==",
+              "Title": "UpdateClienteCommand.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteCommand.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteCommand.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteCommand.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T02:36:36.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClienteRequestDto.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\DTOs\\ClienteRequestDto.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\DTOs\\ClienteRequestDto.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\DTOs\\ClienteRequestDto.cs",
-              "RelativeToolTip": "Core\\Application\\DTOs\\ClienteRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T02:36:23.765Z",
+              "WhenOpened": "2025-09-20T15:38:59.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "UpdateClienteHandler.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteHandler.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteHandler.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Update\\UpdateClienteHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:40:25.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ClientesController.cs",
               "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
               "RelativeDocumentMoniker": "Web\\API\\Controllers\\ClientesController.cs",
               "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
               "RelativeToolTip": "Web\\API\\Controllers\\ClientesController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAwBQAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T02:34:47.223Z",
+              "WhenOpened": "2025-09-20T15:35:39.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClienteMapper.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Mappers\\ClienteMapper.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Mappers\\ClienteMapper.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Mappers\\ClienteMapper.cs",
+              "RelativeToolTip": "Core\\Application\\Mappers\\ClienteMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:20:13.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateClienteHandler.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:36:53.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateClienteCommand.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:36:36.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddApplicationExtension.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\AddApplicationExtension.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\AddApplicationExtension.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\AddApplicationExtension.cs",
+              "RelativeToolTip": "Core\\Application\\AddApplicationExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:44:37.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeleteClienteCommand.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Delete\\DeleteClienteCommand.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Delete\\DeleteClienteCommand.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Delete\\DeleteClienteCommand.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Delete\\DeleteClienteCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:39:25.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GetClienteByIdHandler.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdHandler.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdHandler.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:41:19.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GetClienteByIdQuery.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdQuery.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdQuery.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdQuery.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Queries\\GetClienteByIdQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T15:32:53.856Z",
               "EditorCaption": ""
             }
           ]

@@ -1,6 +1,4 @@
 ﻿
-using Application.Features.Cliente.Handlers;
-using Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

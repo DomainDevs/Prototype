@@ -4,7 +4,9 @@
 // =========================================================
 
 using Application.DTOs;
-using Application.Features.Cliente.Commands;
+using Application.Features.Cliente.Commands.Create;
+using Application.Features.Cliente.Commands.Update;
+using Application.Features.Cliente.Commands.Delete;
 using Domain.Entities;
 using Riok.Mapperly.Abstractions;
 

@@ -3,6 +3,8 @@ using Application.Mappers;
 using Domain.Interfaces;
 using MediatR;
 
+namespace Application.Features.Cliente.Commands.Create;
+
 public class CreateClienteHandler : IRequestHandler<CreateClienteCommand, int>
 {
     private readonly IClienteRepository _clienteRepository;
