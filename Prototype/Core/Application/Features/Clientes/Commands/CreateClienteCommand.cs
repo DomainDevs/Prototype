@@ -2,4 +2,4 @@
 
 namespace Application.Features.Clientes.Commands;
 
-public record CreateClienteCommand(string Nombre, string Apellido, string Email) : IRequest<int>;
+public record CreateClienteCommand(string? Nombre = null, string? Apellido = null, string? Email = null) : IRequest<int>;

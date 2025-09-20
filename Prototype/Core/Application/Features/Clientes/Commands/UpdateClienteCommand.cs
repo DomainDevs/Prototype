@@ -1,6 +1,10 @@
-﻿// Application/Clientes/Commands/UpdateClienteCommand.cs
+﻿// Este record es solo un contenedor de datos para MediatR
+using Application.DTOs;
 using MediatR;
 
-namespace Application.Clientes.Commands;
-
-public record UpdateClienteCommand(int Id, string? Nombre = null, string? Apellido = null, string? Email = null) : IRequest<bool>;
+public record UpdateClienteCommand(
+    int Id,          // Coincide con DTO.Id
+    string Nombre,
+    string Apellido,
+    string? Email
+) : IRequest<int>;

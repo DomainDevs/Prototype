@@ -1,57 +1,29 @@
-﻿using Domain.Common; // ✅ nuevo
-using DataToolkit.Library.Repositories;
-using DataToolkit.Library.UnitOfWorkLayer;
+﻿using DataToolkit.Library.Repositories;
 using Domain.Entities;
 using Domain.Interfaces;
+using System.Data;
+using System.Linq.Expressions;
 
 namespace Persistence.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        private readonly IUnitOfWork _uow;
+        private readonly GenericRepository<Cliente> _repo;
 
-        public ClienteRepository(IUnitOfWork uow)
+        public ClienteRepository(IDbConnection connection)
         {
-            _uow = uow;
+            _repo = new GenericRepository<Cliente>(connection);
         }
 
-        public Task<IEnumerable<Cliente>> GetAllAsync()
-        {
-            var repo = _uow.GetRepository<Cliente>();
-            return repo.GetAllAsync();
-        }
+        public Task<int> InsertAsync(Cliente entity) => _repo.InsertAsync(entity);
 
-        public async Task<Cliente?> GetByIdAsync(int id)
-        {
-            var repo = _uow.GetRepository<Cliente>();
-            return await repo.GetByIdAsync(new Cliente { Id = id });
-        }
+        public Task<int> UpdateAsync(Cliente entity, params Expression<Func<Cliente, object>>[] includeProperties)
+            => _repo.UpdateAsync(entity, includeProperties);
 
-        public async Task<int> InsertAsync(Cliente cliente)
-        {
-            var repo = _uow.GetRepository<Cliente>();
-            var result = await repo.InsertAsync(cliente);
-            _uow.Commit();
-            return result;
-        }
+        public Task<int> DeleteAsync(Cliente entity) => _repo.DeleteAsync(entity);
 
-        public async Task<int> UpdateAsync(
-            Cliente cliente,
-            Action<IUpdateBuilder<Cliente>>? configure = null
-        )
-        {
-            var repo = _uow.GetRepository<Cliente>();
-            var result = await repo.UpdateAsync(cliente, configure);
-            _uow.Commit();
-            return result;
-        }
+        public Task<Cliente?> GetByIdAsync(Cliente entity) => _repo.GetByIdAsync(entity);
 
-        public async Task<int> DeleteAsync(Cliente cliente)
-        {
-            var repo = _uow.GetRepository<Cliente>();
-            var result = await repo.DeleteAsync(cliente);
-            _uow.Commit();
-            return result;
-        }
+        public Task<IEnumerable<Cliente>> GetAllAsync() => _repo.GetAllAsync();
     }
 }

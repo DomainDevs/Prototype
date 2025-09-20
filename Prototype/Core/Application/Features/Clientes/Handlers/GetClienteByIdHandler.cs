@@ -1,4 +1,5 @@
 ﻿// Application/Features/Clientes/Handlers/GetClienteByIdHandler.cs
+// Application/Features/Clientes/Handlers/GetClienteByIdHandler.cs
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
@@ -19,7 +20,9 @@ namespace Application.Features.Clientes.Handlers
 
         public async Task<ClienteRequestDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _repo.GetByIdAsync(request.Id);
+            var clientes = await _repo.GetAllAsync();
+            var entity = clientes.FirstOrDefault(c => c.Id == request.Id);
+
             if (entity is null) return null;
 
             return new ClienteRequestDto

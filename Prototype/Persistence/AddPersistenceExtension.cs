@@ -1,4 +1,5 @@
-﻿using DataToolkit.Library.Sql;
+﻿using DataToolkit.Library.Repositories;
+using DataToolkit.Library.Sql;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.Extensions.Configuration;

@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using DataToolkit.Library.Extensions;
 using DataToolkit.Library.Sql;
 using DataToolkit.Library.Connections;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Persistence.DataToolkit;
 
@@ -20,6 +22,11 @@ internal static class AddConfigureDataToolkit
                 throw new InvalidOperationException("Connection string 'ConnectionStrings'" +
             " not found.");
 
+
+        // Registrar IDbConnection (scoped, igual que los repositorios)
+        services.AddScoped<IDbConnection>(sp => new SqlConnection(conStringSQl));
+        // Si quieres inyectar ISqlExecutor también
+        services.AddScoped<ISqlExecutor>(sp => sp.GetRequiredService<SqlExecutor>());
         //Conexion simple una BD
         services.AddDataToolkitSqlServer(configuration.GetConnectionString("SqlServer")!);
 
