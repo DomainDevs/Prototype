@@ -3,7 +3,7 @@ using Application.Features.Clientes.Commands;
 using Application.Features.Clientes.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Mappers; // <--- Esto es clave
+using Application.Mappers;
 
 namespace API.Controllers
 {
@@ -55,8 +55,6 @@ namespace API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-
 
             // Solo enviamos DTO + id al handler
             //var updatedId = await _mediator.Send(new UpdateClienteCommandDto(id, dto));

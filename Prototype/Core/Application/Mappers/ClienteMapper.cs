@@ -9,8 +9,15 @@ using Riok.Mapperly.Abstractions;
 
 namespace Application.Mappers;
 
-[Mapper]
-public static partial class ClienteMapper
+public static class ClienteCommandMapper
 {
-    public static partial UpdateClienteCommand ToCommand(ClienteRequestDto dto);
+    public static UpdateClienteCommand ToCommand(this ClienteRequestDto dto)
+    {
+        return new UpdateClienteCommand(
+            dto.Id,
+            dto.Nombre,
+            dto.Apellido,
+            dto.Email
+        );
+    }
 }
