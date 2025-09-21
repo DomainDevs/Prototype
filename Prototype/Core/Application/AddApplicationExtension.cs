@@ -18,7 +18,7 @@ public static class AddApplicationExtension
             cfg.RegisterServicesFromAssembly(assembly));
 
         // Aquí podrías agregar FluentValidation si lo usas
-        //services.AddValidatorsFromAssembly(assembly);
+        services.AddValidatorsFromAssembly(assembly);
 
 
         return services;
