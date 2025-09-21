@@ -21,6 +21,7 @@ public static class AddApplicationExtension
         // Aquí podrías agregar FluentValidation si lo usas
         services.AddValidatorsFromAssembly(assembly);
 
+        //Inyectar el PipelineBehavior, este podría analizar si existe algun proceso de validación y ejecutar las reglas respectivas.
         services.AddTransient(
             typeof(IPipelineBehavior<,>),
             typeof(Application.Common.Behaviors.ValidationBehavior<,>)
