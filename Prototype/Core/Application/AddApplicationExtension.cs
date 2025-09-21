@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
+using MediatR;
 
 namespace Application;
 
@@ -19,6 +20,11 @@ public static class AddApplicationExtension
 
         // Aquí podrías agregar FluentValidation si lo usas
         services.AddValidatorsFromAssembly(assembly);
+
+        services.AddTransient(
+            typeof(IPipelineBehavior<,>),
+            typeof(Application.Common.Behaviors.ValidationBehavior<,>)
+        );
 
 
         return services;
