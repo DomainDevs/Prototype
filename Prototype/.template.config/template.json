@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "DomainDevs",
+  "classifications": [ "CQRS", "MediatR", "DDD", "CleanArchitecture" ],
+  "identity": "DomainDevs.Prototype.CQRS",
+  "name": "Prototype Clean Architecture",
+  "shortName": "prototype",
+  "sourceName": "Prototype",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}
