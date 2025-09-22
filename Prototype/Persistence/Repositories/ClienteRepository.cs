@@ -20,9 +20,17 @@ namespace Persistence.Repositories
         public Task<int> UpdateAsync(Cliente entity, params Expression<Func<Cliente, object>>[] includeProperties)
             => _repo.UpdateAsync(entity, includeProperties);
 
-        public Task<int> DeleteAsync(Cliente entity) => _repo.DeleteAsync(entity);
+        public async Task<int> DeleteByIdAsync(int id)
+        {
+            var entity = new Cliente { Id = id };
+            return await _repo.DeleteAsync(entity);
+        }
 
-        public Task<Cliente?> GetByIdAsync(Cliente entity) => _repo.GetByIdAsync(entity);
+        public Task<Cliente?> GetByIdAsync(int id)
+        {
+            var entity = new Cliente { Id = id };
+            return _repo.GetByIdAsync(entity);
+        }
 
         public Task<IEnumerable<Cliente>> GetAllAsync() => _repo.GetAllAsync();
     }

@@ -1,9 +1,9 @@
 ﻿using Application.DTOs;
-using Application.Features.Cliente.Commands;
 using Application.Features.Cliente.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Mappers;
+using Application.Features.Cliente.Commands.Delete;
 
 namespace API.Controllers
 {
@@ -16,6 +16,16 @@ namespace API.Controllers
         public ClientesController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        // ==================================================
+        // Obtener todos los clientes
+        // ==================================================
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var clientes = await _mediator.Send(new GetAllClientesQuery());
+            return Ok(clientes);
         }
 
         // ==================================================
@@ -64,5 +74,20 @@ namespace API.Controllers
 
             return NoContent();
         }
+
+        // ==================================================
+        // Eliminar un cliente
+        // ==================================================
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleted = await _mediator.Send(new DeleteClienteCommand(id));
+
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
+
     }
 }

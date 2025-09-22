@@ -12,18 +12,16 @@ public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, Client
     private readonly IClienteRepository _repo;
 
     public GetClienteByIdHandler(IClienteRepository repo)
-    {
-        _repo = repo;
-    }
+    => _repo = repo;
 
     public async Task<ClienteRequestDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
     {
-        var cliente = await _repo.GetAllAsync();
-        var entity = cliente.FirstOrDefault(c => c.Id == request.Id);
+        // Ahora usamos directamente el método del repositorio
+        var entity = await _repo.GetByIdAsync(request.Id);
 
-        if (entity is null) return null;
+        if (entity is null)
+            return null;
 
-        return ClienteMapper.ToDto(entity); //entity  → Dto
-
+        return ClienteMapper.ToDto(entity); // Entity → Dto
     }
 }
