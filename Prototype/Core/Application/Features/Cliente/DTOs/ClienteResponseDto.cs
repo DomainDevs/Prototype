@@ -15,6 +15,6 @@ public class ClienteResponseDto
     public string Apellido { get; set; }
 
     [JsonPropertyName("Email")]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
 }
