@@ -1,21 +1,19 @@
-﻿using Application.Features.Cliente.Mappers;
-using Domain.Interfaces;
+﻿// CreateClienteHandler.cs
 using MediatR;
+using Domain.Interfaces;
+using Application.Features.Cliente.Mappers;
+using Entities = Domain.Entities;
 
 namespace Application.Features.Cliente.Commands.Create;
 
 public class CreateClienteHandler : IRequestHandler<CreateClienteCommand, int>
 {
-    private readonly IClienteRepository _clienteRepository;
+    private readonly IClienteRepository _repo;
+    public CreateClienteHandler(IClienteRepository repo) => _repo = repo;
 
-    public CreateClienteHandler(IClienteRepository clienteRepository)
+    public async Task<int> Handle(CreateClienteCommand request, CancellationToken ct)
     {
-        _clienteRepository = clienteRepository;
-    }
-
-    public async Task<int> Handle(CreateClienteCommand request, CancellationToken cancellationToken)
-    {
-        var cliente = ClienteMapper.ToEntity(request); // Commands → Entity
-        return await _clienteRepository.InsertAsync(cliente);
+        var entity = ClienteMapper.ToEntity(request);
+        return await _repo.InsertAsync(entity);
     }
 }
