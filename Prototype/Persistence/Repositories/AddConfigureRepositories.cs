@@ -14,7 +14,6 @@ internal static class AddConfigureRepositories
     {
 
         //registra implementaciones concretas
-        services.AddScoped<IPropertyRepository, PropertyRepository>();
         services.AddScoped<IClienteRepository, ClienteRepository>();
 
 
