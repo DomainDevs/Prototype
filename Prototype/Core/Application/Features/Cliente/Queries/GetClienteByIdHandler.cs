@@ -1,6 +1,6 @@
-﻿using Application.DTOs;
+﻿using Application.Features.Cliente.DTOs;
+using Application.Features.Cliente.Mappers;
 using Application.Features.Cliente.Queries;
-using Application.Mappers;
 using Domain.Interfaces;
 using MediatR;
 

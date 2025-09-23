@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\common\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\mappers\\clientemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\mappers\\clientemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\libs\\datatoolkitv2\\datatoolkit.library\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|solutionrelative:libs\\datatoolkitv2\\datatoolkit.library\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\libs\\datatoolkitv2\\datatoolkit.library\\common\\multimaprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E12E0C4D-EF46-A5C5-DE97-74A098020E60}|Libs\\datatoolkitv2\\DataToolkit.Library\\DataToolkit.Library.csproj|solutionrelative:libs\\datatoolkitv2\\datatoolkit.library\\common\\multimaprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\core\\application\\features\\cliente\\commands\\create\\createclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\cliente\\commands\\create\\createclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\prototype\\web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ValidationBehavior.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "RelativeToolTip": "Core\\Application\\Common\\Behaviors\\ValidationBehavior.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAgwEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:24:41.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "Libs\\datatoolkitv2\\DataToolkit.Library\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "Libs\\datatoolkitv2\\DataToolkit.Library\\Extensions\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T19:45:40.445Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClienteMapper.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Mappers\\ClienteMapper.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Mappers\\ClienteMapper.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Mappers\\ClienteMapper.cs",
-              "RelativeToolTip": "Core\\Application\\Mappers\\ClienteMapper.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T19:44:29.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MultiMapRequest.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\Common\\MultiMapRequest.cs",
-              "RelativeDocumentMoniker": "Libs\\datatoolkitv2\\DataToolkit.Library\\Common\\MultiMapRequest.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Libs\\datatoolkitv2\\DataToolkit.Library\\Common\\MultiMapRequest.cs",
-              "RelativeToolTip": "Libs\\datatoolkitv2\\DataToolkit.Library\\Common\\MultiMapRequest.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAswBAAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T19:44:23.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateClienteValidator.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T15:57:51.623Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreateClienteCommand.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T16:02:45.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AddApplicationExtension.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\AddApplicationExtension.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\AddApplicationExtension.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\AddApplicationExtension.cs*",
-              "RelativeToolTip": "Core\\Application\\AddApplicationExtension.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA4AAAAAAAAAA==",
+              "Title": "ClientesController.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
+              "RelativeDocumentMoniker": "Web\\API\\Controllers\\ClientesController.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Web\\API\\Controllers\\ClientesController.cs",
+              "RelativeToolTip": "Web\\API\\Controllers\\ClientesController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAADUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T16:27:16.6Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CreateClienteHandler.cs",
-              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
-              "RelativeDocumentMoniker": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
-              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Prototype\\Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
-              "RelativeToolTip": "Core\\Application\\Features\\Cliente\\Commands\\Create\\CreateClienteHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T16:02:46.283Z",
+              "WhenOpened": "2025-09-23T04:33:38.214Z",
               "EditorCaption": ""
             }
           ]

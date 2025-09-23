@@ -1,6 +1,5 @@
 ﻿using MediatR;
-using Application.DTOs;
-using System.Collections.Generic;
+using Application.Features.Cliente.DTOs;
 
 namespace Application.Features.Cliente.Queries;
 

@@ -1,9 +1,9 @@
-﻿using Application.DTOs;
-using Application.Features.Cliente.Queries;
+﻿using Application.Features.Cliente.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Mappers;
 using Application.Features.Cliente.Commands.Delete;
+using Application.Features.Cliente.DTOs;
+using Application.Features.Cliente.Mappers;
 
 namespace API.Controllers
 {
@@ -50,7 +50,7 @@ namespace API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
+            
             var command = dto.ToCommandCreate(); //dto -> command
             var newId = await _mediator.Send(command);
 

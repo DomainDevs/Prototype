@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.Features.Cliente.DTOs;
 using MediatR;
 
 namespace Application.Features.Cliente.Queries
