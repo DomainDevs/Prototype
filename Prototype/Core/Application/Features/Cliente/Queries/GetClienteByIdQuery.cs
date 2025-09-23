@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Application.Features.Cliente.Queries
 {
-    public record GetClienteByIdQuery(int Id) : IRequest<ClienteRequestDto>;
+    public record GetClienteByIdQuery(int Id) : IRequest<ClienteResponseDto?>;
 }
