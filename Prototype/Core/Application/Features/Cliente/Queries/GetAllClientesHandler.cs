@@ -5,16 +5,16 @@ using MediatR;
 
 namespace Application.Features.Cliente.Queries;
 
-public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, IEnumerable<ClienteRequestDto>>
+public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, IEnumerable<ClienteResponseDto>>
 {
     private readonly IClienteRepository _repo;
 
     public GetAllClientesHandler(IClienteRepository repo) => _repo = repo;
 
-    public async Task<IEnumerable<ClienteRequestDto>> Handle(GetAllClientesQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ClienteResponseDto>> Handle(GetAllClientesQuery request, CancellationToken cancellationToken)
     {
         var entities = await _repo.GetAllAsync();
-        if (entities is null) return Enumerable.Empty<ClienteRequestDto>();
+        if (entities is null) return Enumerable.Empty<ClienteResponseDto>();
 
         // Mapear entidades -> DTOs (usa el mapper generado)
         return entities.Select(ClienteMapper.ToDto).ToList();

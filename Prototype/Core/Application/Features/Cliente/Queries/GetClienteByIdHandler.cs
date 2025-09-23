@@ -1,27 +1,23 @@
 ﻿using Application.Features.Cliente.DTOs;
 using Application.Features.Cliente.Mappers;
-using Application.Features.Cliente.Queries;
 using Domain.Interfaces;
 using MediatR;
 
-
 namespace Application.Features.Cliente.Queries;
 
-public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, ClienteRequestDto?>
+public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, ClienteResponseDto?>
 {
     private readonly IClienteRepository _repo;
 
     public GetClienteByIdHandler(IClienteRepository repo)
-    => _repo = repo;
+        => _repo = repo;
 
-    public async Task<ClienteRequestDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ClienteResponseDto?> Handle(GetClienteByIdQuery request, CancellationToken cancellationToken)
     {
-        // Ahora usamos directamente el método del repositorio
         var entity = await _repo.GetByIdAsync(request.Id);
-
         if (entity is null)
             return null;
 
-        return ClienteMapper.ToDto(entity); // Entity → Dto
+        return ClienteMapper.ToResponseDto(entity);
     }
 }

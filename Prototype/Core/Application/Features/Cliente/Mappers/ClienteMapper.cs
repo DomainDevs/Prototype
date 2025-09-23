@@ -23,7 +23,7 @@ public static partial class ClienteMapper
     public static partial Entities.Cliente ToEntity(UpdateClienteCommand command);
 
     // Entity → DTO
-    public static partial ClienteRequestDto ToDto(Entities.Cliente entity);
+    public static partial ClienteResponseDto ToDto(Entities.Cliente entity);
 
     // Entity → Response DTO
     public static partial ClienteResponseDto ToResponseDto(Entities.Cliente entity);
