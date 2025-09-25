@@ -15,6 +15,7 @@ internal static class AddConfigureRepositories
 
         //registra implementaciones concretas
         services.AddScoped<IClienteRepository, ClienteRepository>();
+        services.AddScoped<IPvHeaderRepository, PvHeaderRepository>();
 
 
         return services;

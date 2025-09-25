@@ -18,6 +18,6 @@ public class GetClienteByIdHandler : IRequestHandler<GetClienteByIdQuery, Client
         if (entity is null)
             return null;
 
-        return ClienteMapper.ToResponseDto(entity);
+        return ClienteMapper.ToDto(entity);
     }
 }
