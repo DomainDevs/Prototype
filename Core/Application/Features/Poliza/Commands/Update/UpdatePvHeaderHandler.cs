@@ -14,6 +14,6 @@ public class UpdatePvHeaderHandler : IRequestHandler<UpdatePvHeaderCommand, int>
     public async Task<int> Handle(UpdatePvHeaderCommand request, CancellationToken ct)
     {
         var entity = PvHeaderMapper.ToEntity(request);
-        return await _repo.UpdateAsync(entity);
+        return await _repo.UpdateAsync(entity, c => c.Prima, c => c.SumaAseg);
     }
 }
