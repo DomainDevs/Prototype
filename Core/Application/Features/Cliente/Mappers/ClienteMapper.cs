@@ -25,6 +25,4 @@ public static partial class ClienteMapper
     // Entity → DTO
     public static partial ClienteResponseDto ToDto(Entities.Cliente entity);
 
-    // Entity → Response DTO
-    //public static partial ClienteResponseDto ToResponseDto(Entities.Cliente entity);
 }
