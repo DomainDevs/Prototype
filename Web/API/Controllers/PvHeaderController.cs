@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Features.Poliza.Queries;
-using Application.Features.Poliza.Commands.Create;
-using Application.Features.Poliza.Commands.Update;
-using Application.Features.Poliza.Commands.Delete;
+using Application.Features.Poliza.Commands;
 using Application.Features.Poliza.DTOs;
 using Application.Features.Poliza.Mappers;
 
@@ -20,20 +18,20 @@ public class PvHeaderController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var list = await _mediator.Send(new GetAllPvHeaderQuery());
+        var list = await _mediator.Send(new PvHeaderGetAllQuery());
         return Ok(list);
     }
 
     [HttpGet("{cod_suc}/{cod_ramo}/{nro_pol}/{nro_endoso}")]
     public async Task<IActionResult> GetById(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso)
     {
-        var item = await _mediator.Send(new GetPvHeaderByIdQuery(cod_suc, cod_ramo, nro_pol, nro_endoso));
+        var item = await _mediator.Send(new PvHeaderGetByIdQuery(cod_suc, cod_ramo, nro_pol, nro_endoso));
         if (item == null) return NotFound();
         return Ok(item);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] PvHeaderRequestDto dto)
+    public async Task<IActionResult> Create([FromBody] PvHeaderCreateRequestDto dto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
         var command = dto.ToCommandCreate();
@@ -43,9 +41,16 @@ public class PvHeaderController : ControllerBase
     }
 
     [HttpPut("{cod_suc}/{cod_ramo}/{nro_pol}/{nro_endoso}")]
-    public async Task<IActionResult> Update(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso, [FromBody] PvHeaderRequestDto dto)
+    public async Task<IActionResult> Update(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso, [FromBody] PvHeaderUpdateRequestDto dto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        // inyección de llaves
+        dto.CodSuc = cod_suc;
+        dto.CodRamo = cod_ramo;
+        dto.NroPol = nro_pol;
+        dto.NroEndoso = nro_endoso;
+
         var command = dto.ToUpdateCommand();
         var result = await _mediator.Send(command);
         return result == 0 ? NotFound() : NoContent();
@@ -54,7 +59,7 @@ public class PvHeaderController : ControllerBase
     [HttpDelete("{cod_suc}/{cod_ramo}/{nro_pol}/{nro_endoso}")]
     public async Task<IActionResult> Delete(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso)
     {
-        var deleted = await _mediator.Send(new DeletePvHeaderCommand(cod_suc, cod_ramo, nro_pol, nro_endoso));
+        var deleted = await _mediator.Send(new PvHeaderDeleteCommand(cod_suc, cod_ramo, nro_pol, nro_endoso));
         return !deleted ? NotFound() : NoContent();
     }
 }

@@ -4,25 +4,26 @@
 // =========================================================
 
 using Application.Features.Poliza.DTOs;
-using Application.Features.Poliza.Commands.Create;
-using Application.Features.Poliza.Commands.Update;
+using Application.Features.Poliza.Commands;
 using Riok.Mapperly.Abstractions;
 using Entities = Domain.Entities;
 
 namespace Application.Features.Poliza.Mappers;
 
-[Mapper]
+[Mapper(AllowNullPropertyAssignment = true, RequiredMappingStrategy = RequiredMappingStrategy.None)]
 public static partial class PvHeaderMapper
 {
     // DTO → Commands
-    public static partial UpdatePvHeaderCommand ToUpdateCommand(this PvHeaderRequestDto dto);
-    public static partial CreatePvHeaderCommand ToCommandCreate(this PvHeaderRequestDto dto);
+    public static partial PvHeaderUpdateCommand ToUpdateCommand(this PvHeaderUpdateRequestDto dto);
+    public static partial PvHeaderCreateCommand ToCommandCreate(this PvHeaderCreateRequestDto dto);
 
     // Commands → Entity
-    public static partial Entities.PvHeader ToEntity(CreatePvHeaderCommand command);
-    public static partial Entities.PvHeader ToEntity(UpdatePvHeaderCommand command);
+    public static partial Entities.PvHeader ToEntity(PvHeaderCreateCommand command);
+    public static partial Entities.PvHeader ToEntity(PvHeaderUpdateCommand command);
 
     // Entity → DTO
-    public static partial PvHeaderResponseDto ToDto(Entities.PvHeader entity);
+    public static partial PvHeaderQueryResponseDto ToDto(Entities.PvHeader entity);
 
 }
+
+
