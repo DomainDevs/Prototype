@@ -20,9 +20,11 @@ try
     app.UseInfrastructure(builder.Configuration); //Habilitar uso de Middlewares
 
     // Configure the HTTP request pipeline.
+    /*
     if (app.Environment.IsDevelopment()) { 
         app.MapOpenApi(); // Swagger solo en dev
     }
+    */
 
     app.MapControllers();
     app.Run();

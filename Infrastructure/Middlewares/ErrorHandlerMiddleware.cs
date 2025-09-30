@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Serilog;
+using Shared;
+using Shared.DTOs;
+using Shared.Exceptions;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infrastructure.Middlewares;
 
@@ -27,57 +29,62 @@ namespace Infrastructure.Middlewares;
 /// Logging claro: separa errores de negocio(400–409) de errores críticos(500).
 /// Extensible: puedes añadir nuevas excepciones personalizadas en el switch.
 /// Observabilidad: el traceId permite correlacionar logs con errores reportados por clientes.
-
-
+/// </summary>
 public class ErrorHandlerMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ErrorHandlerMiddleware> _logger;
 
-    /// <summary>
-    /// Constructor del middleware de manejo de errores.
-    /// </summary>
-    /// <param name="next">Delegado al siguiente middleware en el pipeline.</param>
-    /// <param name="logger">Logger para registrar las excepciones.</param>
     public ErrorHandlerMiddleware(RequestDelegate next, ILogger<ErrorHandlerMiddleware> logger)
     {
         _next = next;
         _logger = logger;
     }
 
-    /// <summary>
-    /// Método principal de ejecución del middleware.
-    /// Captura cualquier excepción lanzada por los middlewares o controladores subsiguientes.
-    /// </summary>
-    /// <param name="context">El contexto HTTP actual.</param>
     public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            // Continúa con el siguiente middleware en el pipeline
             await _next(context);
         }
         catch (Exception ex)
         {
-            // Captura y maneja cualquier excepción
-            await HandleExceptionAsync(context, ex);
+            //await HandleExceptionAsync(context, ex);
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            var response = new
+            {
+                error = ex.Message
+            };
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response));
         }
     }
 
-    /// <summary>
-    /// Mapea la excepción capturada a un código de estado HTTP y devuelve
-    /// una respuesta JSON estandarizada al cliente.
-    /// </summary>
-    /// <param name="context">El contexto HTTP actual.</param>
-    /// <param name="ex">La excepción capturada.</param>
     private async Task HandleExceptionAsync(HttpContext context, Exception ex)
     {
         HttpStatusCode statusCode;
-        string message = ex.Message;
+        var response = new ResponseDTO<object>
+        {
+            Success = false,
+            Message = ex.Message,
+            Data = null
+        };
 
         // Mapeo de excepciones a códigos HTTP
         switch (ex)
         {
+            case ControlValidationException validationEx:
+                statusCode = HttpStatusCode.BadRequest;
+                response = new ResponseDTO<object>
+                {
+                    Success = false,
+                    Message = validationEx.Message,
+                    Data = validationEx.Errors
+                };
+                break;
+
             case ArgumentNullException:
             case ArgumentException:
                 statusCode = HttpStatusCode.BadRequest; // 400
@@ -110,14 +117,7 @@ public class ErrorHandlerMiddleware
         else
             _logger.LogWarning(ex, "Handled business exception: {Message}", ex.Message);
 
-        // Construcción de respuesta uniforme
-        var response = new
-        {
-            statusCode = (int)statusCode,
-            message,
-            traceId = context.TraceIdentifier // ID de rastreo para correlación
-        };
-
+        // Respuesta uniforme
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
 

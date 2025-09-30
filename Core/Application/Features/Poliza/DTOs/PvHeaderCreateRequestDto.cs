@@ -59,11 +59,11 @@ namespace Application.Features.Poliza.DTOs
         public short? Eserror { get; set; }
 
         [JsonPropertyName("Prima")]
-        [Range(typeof(decimal), "0", "9999999999999999.99")]
+        [Range(typeof(decimal), "0", "999999999999999999.99")]
         public decimal? Prima { get; set; }
 
         [JsonPropertyName("SumaAseg")]
-        [Range(typeof(decimal), "0", "9999999999.99")]
+        [Range(typeof(decimal), "0", "999999999999.99")]
         public decimal? SumaAseg { get; set; }
 
     }

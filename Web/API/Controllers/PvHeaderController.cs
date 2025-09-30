@@ -4,6 +4,9 @@ using Application.Features.Poliza.Queries;
 using Application.Features.Poliza.Commands;
 using Application.Features.Poliza.DTOs;
 using Application.Features.Poliza.Mappers;
+using Shared.DTOs;
+using Shared.Helpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace API.Controllers;
 
@@ -33,11 +36,30 @@ public class PvHeaderController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] PvHeaderCreateRequestDto dto)
     {
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState
+                .Where(ms => ms.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value!.Errors.Select(e => e.ErrorMessage).ToList()
+                );
+
+            return BadRequest(ApiResponse.Fail("Errores de validación", errors));
+        }
+
         if (!ModelState.IsValid) return BadRequest(ModelState);
         var command = dto.ToCommandCreate();
         var result = await _mediator.Send(command);
+
         // Para PK compuestos se asume que el handler devuelve un objeto con todas las claves
-        return CreatedAtAction(nameof(GetById), result, result);
+        //return CreatedAtAction(nameof(GetById), result, result);
+        // Si quieres revisar cantidad de filas afectadas
+        if (result == 0)
+            return BadRequest(ApiResponse.Fail<object>("No se pudo insertar el registro"));
+
+        return Ok(ApiResponse.Success(result, "Registro insertado correctamente"));
+
     }
 
     [HttpPut("{cod_suc}/{cod_ramo}/{nro_pol}/{nro_endoso}")]
