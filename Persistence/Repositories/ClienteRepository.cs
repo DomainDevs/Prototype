@@ -15,10 +15,15 @@ namespace Persistence.Repositories
             _repo = new GenericRepository<Cliente>(connection);
         }
 
-        public Task<int> InsertAsync(Cliente entity) => _repo.InsertAsync(entity);
+        public Task<int> InsertAsync(Cliente entity)
+        {
+            return _repo.InsertAsync(entity);
+        }
 
         public Task<int> UpdateAsync(Cliente entity, params Expression<Func<Cliente, object>>[] includeProperties)
-            => _repo.UpdateAsync(entity, includeProperties);
+        {
+            return _repo.UpdateAsync(entity, includeProperties);
+        }
 
         public async Task<int> DeleteByIdAsync(int id)
         {
@@ -32,6 +37,10 @@ namespace Persistence.Repositories
             return _repo.GetByIdAsync(entity);
         }
 
-        public Task<IEnumerable<Cliente>> GetAllAsync() => _repo.GetAllAsync();
+        public async Task<IEnumerable<Cliente>> GetAllAsync()
+        {
+            var Entity = await _repo.GetAllAsync();
+            return Entity;
+        }
     }
 }
