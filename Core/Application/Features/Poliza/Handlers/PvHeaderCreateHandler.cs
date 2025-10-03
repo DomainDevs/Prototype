@@ -18,4 +18,3 @@ public class PvHeaderCreateHandler : IRequestHandler<PvHeaderCreateCommand, int>
         return await _repo.InsertAsync(entity);
     }
 }
-

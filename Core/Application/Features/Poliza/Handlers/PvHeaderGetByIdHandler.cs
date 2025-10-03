@@ -20,4 +20,3 @@ public class PvHeaderGetByIdHandler : IRequestHandler<PvHeaderGetByIdQuery, PvHe
         return PvHeaderMapper.ToDto(entity);
     }
 }
-

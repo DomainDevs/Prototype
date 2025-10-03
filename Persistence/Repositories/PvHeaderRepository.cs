@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 
 namespace Persistence.Repositories
 {
-
     public class PvHeaderRepository : IPvHeaderRepository
     {
         private readonly GenericRepository<PvHeader> _repo;
@@ -16,23 +15,32 @@ namespace Persistence.Repositories
             _repo = new GenericRepository<PvHeader>(connection);
         }
 
-        public Task<int> InsertAsync(PvHeader entity) => _repo.InsertAsync(entity);
+        public Task<int> InsertAsync(PvHeader entity)
+        {
+            return _repo.InsertAsync(entity);
+        }
 
         public Task<int> UpdateAsync(PvHeader entity, params Expression<Func<PvHeader, object>>[] includeProperties)
-            => _repo.UpdateAsync(entity, includeProperties);
-
-        public async Task<int> DeleteByIdAsync(int codSuc, int codRamo, long nroPol, int nroEndoso)
         {
-            var entity = new PvHeader { CodSuc = codSuc, CodRamo = codRamo, NroPol = nroPol, NroEndoso = nroEndoso };
-            return await _repo.DeleteAsync(entity);
+            return _repo.UpdateAsync(entity, includeProperties);
         }
 
-        public Task<PvHeader?> GetByIdAsync(int codSuc, int codRamo, long nroPol, int nroEndoso)
+        public Task<IEnumerable<PvHeader>> GetAllAsync(params Expression<Func<PvHeader, object>>[]? selectProperties)
         {
-            var entity = new PvHeader { CodSuc = codSuc, CodRamo = codRamo, NroPol = nroPol, NroEndoso = nroEndoso };
-            return _repo.GetByIdAsync(entity);
+            return _repo.GetAllAsync(selectProperties);
         }
 
-        public Task<IEnumerable<PvHeader>> GetAllAsync() => _repo.GetAllAsync();
+
+        public Task<PvHeader?> GetByIdAsync(int codSuc, int codRamo, long nroPol, int nroEndoso, params Expression<Func<PvHeader, object>>[]? selectProperties)
+        {
+            var entity = new PvHeader { CodSuc = codSuc, CodRamo = codRamo, NroPol = nroPol, NroEndoso = nroEndoso };
+            return _repo.GetByIdAsync(entity, selectProperties);
+        }
+
+        public Task<int> DeleteByIdAsync(int codSuc, int codRamo, long nroPol, int nroEndoso)
+        {
+            var entity = new PvHeader { CodSuc = codSuc, CodRamo = codRamo, NroPol = nroPol, NroEndoso = nroEndoso };
+            return _repo.DeleteAsync(entity);
+        }
     }
 }

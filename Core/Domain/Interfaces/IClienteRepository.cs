@@ -1,14 +1,15 @@
 ﻿using Domain.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Domain.Interfaces;
 
+// Interfaz IClienteRepository (autogenerada)
 public interface IClienteRepository
 {
     Task<int> InsertAsync(Cliente entity);
-    Task<int> UpdateAsync(Cliente entity, params System.Linq.Expressions.Expression<Func<Cliente, object>>[] includeProperties);
+    Task<int> UpdateAsync(Cliente entity, params Expression<Func<Cliente, object>>[] includeProperties);
+    Task<IEnumerable<Cliente>> GetAllAsync(params Expression<Func<Cliente, object>>[]? selectProperties);
+    Task<Cliente?> GetByIdAsync(int id, params Expression<Func<Cliente, object>>[]? selectProperties);
     Task<int> DeleteByIdAsync(int id);
-    Task<Cliente?> GetByIdAsync(int id);
-    Task<IEnumerable<Cliente>> GetAllAsync();
 }
+

@@ -16,4 +16,3 @@ public class PvHeaderGetAllHandler : IRequestHandler<PvHeaderGetAllQuery, IEnume
     public async Task<IEnumerable<PvHeaderQueryResponseDto>> Handle(PvHeaderGetAllQuery request, CancellationToken ct)
         => (await _repo.GetAllAsync()).Select(entity => PvHeaderMapper.ToDto(entity));
 }
-

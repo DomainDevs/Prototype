@@ -25,22 +25,22 @@ namespace Persistence.Repositories
             return _repo.UpdateAsync(entity, includeProperties);
         }
 
-        public async Task<int> DeleteByIdAsync(int id)
+        public Task<IEnumerable<Cliente>> GetAllAsync(params Expression<Func<Cliente, object>>[]? selectProperties)
         {
-            var entity = new Cliente { Id = id };
-            return await _repo.DeleteAsync(entity);
+            return _repo.GetAllAsync(selectProperties);
         }
 
-        public Task<Cliente?> GetByIdAsync(int id)
+
+        public Task<Cliente?> GetByIdAsync(int id, params Expression<Func<Cliente, object>>[]? selectProperties)
         {
             var entity = new Cliente { Id = id };
-            return _repo.GetByIdAsync(entity);
+            return _repo.GetByIdAsync(entity, selectProperties);
         }
 
-        public async Task<IEnumerable<Cliente>> GetAllAsync()
+        public Task<int> DeleteByIdAsync(int id)
         {
-            var Entity = await _repo.GetAllAsync();
-            return Entity;
+            var entity = new Cliente { Id = id };
+            return _repo.DeleteAsync(entity);
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Application.Features.Poliza.DTOs
 {
     public class PvHeaderUpdateRequestDto
     {
+        [JsonIgnore]
         [JsonPropertyName("IdPv")]
         [Required]
         public int IdPv { get; set; }
@@ -34,10 +35,12 @@ namespace Application.Features.Poliza.DTOs
         [Range(0, 999999)]
         public int NroEndoso { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("CodGrupoEndo")]
         [Range(0, 99)]
         public int? CodGrupoEndo { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("CodTipoEndo")]
         [Range(0, 99)]
         public int? CodTipoEndo { get; set; }
