@@ -27,5 +27,12 @@ namespace Shared.DTOs
         /// </summary>
         [DefaultValue(null)]
         public T? Data { get; set; } = default;
+
+        /// <summary>
+        /// Lista detallada de errores por campo o regla de validación.
+        /// Se usa principalmente para validaciones de modelo o negocio.
+        /// </summary>
+        [DefaultValue(null)]
+        public Dictionary<string, List<string>>? Errors { get; set; } = null;
     }
 }
