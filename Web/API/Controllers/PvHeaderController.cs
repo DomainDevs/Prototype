@@ -4,8 +4,6 @@ using Application.Features.Poliza.Queries;
 using Application.Features.Poliza.Commands;
 using Application.Features.Poliza.DTOs;
 using Application.Features.Poliza.Mappers;
-using Shared.DTOs;
-using Shared.Helpers;
 
 namespace API.Controllers;
 
@@ -15,7 +13,10 @@ public class PvHeaderController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public PvHeaderController(IMediator mediator) => _mediator = mediator;
+    public PvHeaderController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
 
     // =====================================
     // GET: api/PvHeader
@@ -36,8 +37,8 @@ public class PvHeaderController : ControllerBase
     public async Task<IActionResult> GetById(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso)
     {
         var item = await _mediator.Send(new PvHeaderGetByIdQuery(cod_suc, cod_ramo, nro_pol, nro_endoso));
-        if (item == null) return NotFound();
-        return NotFound(ApiResponse.Fail<object>("Registro no encontrado"));
+        if (item == null) return NotFound(ApiResponse.Fail<object>("Registro no encontrado"));
+        return Ok(ApiResponse.Success(item, "Registro encontrado"));
     }
 
     // =====================================
@@ -55,6 +56,11 @@ public class PvHeaderController : ControllerBase
         }
         var command = dto.ToCommandCreate();
         var result = await _mediator.Send(command);
+
+        if (result == 0)
+        {
+            return BadRequest(ApiResponse.Fail<object>("No se pudo insertar el registro"));
+        }
         // Para PK compuestos se asume que el handler devuelve un objeto con todas las claves
         return CreatedAtAction(nameof(GetById), result, ApiResponse.Success(result, "Registro creado correctamente"));
     }
@@ -82,7 +88,11 @@ public class PvHeaderController : ControllerBase
 
         var command = dto.ToUpdateCommand();
         var result = await _mediator.Send(command);
-        return result == 0 ? NotFound(ApiResponse.Fail<object>("Registro no encontrado")) : Ok(ApiResponse.Success(result, "Registro actualizado correctamente"));
+        if (result == 0)
+        {
+            return NotFound(ApiResponse.Fail<object>("Registro no encontrado para actualización"));
+        }
+        return Ok(ApiResponse.Success(result, "Registro actualizado correctamente"));
     }
 
     // =====================================
@@ -94,6 +104,10 @@ public class PvHeaderController : ControllerBase
     public async Task<IActionResult> Delete(int cod_suc, int cod_ramo, long nro_pol, int nro_endoso)
     {
         var deleted = await _mediator.Send(new PvHeaderDeleteCommand(cod_suc, cod_ramo, nro_pol, nro_endoso));
-        return !deleted ? NotFound(ApiResponse.Fail<object>("Registro no encontrado")) : Ok(ApiResponse.Success(true, "Registro eliminado correctamente"));
+        if (!deleted)
+        {
+            return NotFound(ApiResponse.Fail<object>("Registro no encontrado para eliminación"));
+        }
+        return Ok(ApiResponse.Success<object>(null, "Registro eliminado correctamente"));
     }
 }
