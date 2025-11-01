@@ -4,6 +4,8 @@ using Application.Features.Poliza.Queries;
 using Application.Features.Poliza.Commands;
 using Application.Features.Poliza.DTOs;
 using Application.Features.Poliza.Mappers;
+using Shared.DTOs;
+using Shared.Helpers;
 
 namespace API.Controllers;
 

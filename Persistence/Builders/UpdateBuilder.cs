@@ -4,6 +4,10 @@ using System.Linq.Expressions;
 
 namespace Persistence.Builders;
 
+/*
+El propósito de esa clase es registrar dinámicamente qué propiedades de una entidad cambiaron para construir un UPDATE más eficiente o explícito.
+*/
+
 public class UpdateBuilder<T> : IUpdateBuilder<T>
 {
     private readonly Dictionary<string, object?> _changes = new();
