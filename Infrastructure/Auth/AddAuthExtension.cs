@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Auth;
 
-internal static class AddConfigureAuth
+internal static class AddAuthExtension
 {
 
 }
