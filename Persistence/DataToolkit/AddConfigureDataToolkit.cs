@@ -22,7 +22,6 @@ internal static class AddConfigureDataToolkit
                 throw new InvalidOperationException("Connection string 'ConnectionStrings'" +
             " not found.");
 
-
         // Registrar IDbConnection (scoped, igual que los repositorios)
         services.AddScoped<IDbConnection>(sp => new SqlConnection(conStringSQl));
         // Si quieres inyectar ISqlExecutor también

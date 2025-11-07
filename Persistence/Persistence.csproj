@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Libs\datatoolkitv2\DataToolkit.Library\DataToolkit.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Builders\" />
+  </ItemGroup>
+
 </Project>

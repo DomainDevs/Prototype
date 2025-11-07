@@ -49,21 +49,28 @@ namespace Application.Features.Poliza.DTOs
         [StringLength(100)]
         public string TxtDescription { get; set; }
 
+        /*
+        [JsonIgnore]
         [JsonPropertyName("FechaVencimiento")]
         public DateTime? FechaVencimiento { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("Esdigital")]
         public bool? Esdigital { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("FechaCreacion")]
         public DateTime? FechaCreacion { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("Esprueba")]
         [Range(0, 255)]
         public byte? Esprueba { get; set; }
 
+        [JsonIgnore]
         [JsonPropertyName("Eserror")]
         public short? Eserror { get; set; }
+        */
 
         [JsonPropertyName("Prima")]
         [Range(typeof(decimal), "0", "9999999999999999.99")]
