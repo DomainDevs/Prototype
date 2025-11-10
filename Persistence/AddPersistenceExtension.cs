@@ -5,7 +5,7 @@ using Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.DataToolkit;
-using Persistence.Repositories;
+using Persistence.DependencyInjection;
 
 namespace Persistence;
 

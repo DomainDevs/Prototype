@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
 using MediatR;
+using Application.Features.Localidad.Services;
+using Application.DependencyInjection;
 
 namespace Application;
 
@@ -15,8 +17,7 @@ public static class AddApplicationExtension
 
         //no se necesita, services.AddScoped<Application.Features.Properties.Queries.GetPropertyQueryHandler>(); es redundante
         // Registra automáticamente todos los Commands, Queries y Handlers
-        services.AddMediatR(cfg =>
-            cfg.RegisterServicesFromAssembly(assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
         // Aquí podrías agregar FluentValidation si lo usas
         services.AddValidatorsFromAssembly(assembly);
@@ -27,6 +28,7 @@ public static class AddApplicationExtension
             typeof(Application.Common.Behaviors.ValidationBehavior<,>)
         );
 
+        AddConfigureServices.AddServices(services);
 
         return services;
 
