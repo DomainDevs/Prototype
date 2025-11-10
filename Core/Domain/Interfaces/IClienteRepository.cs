@@ -12,4 +12,3 @@ public interface IClienteRepository
     Task<Cliente?> GetByIdAsync(int id, params Expression<Func<Cliente, object>>[]? selectProperties);
     Task<int> DeleteByIdAsync(int id);
 }
-
