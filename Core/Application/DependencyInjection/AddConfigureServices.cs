@@ -29,22 +29,6 @@ public static class AddConfigureServices
             .WithScopedLifetime()
         );
 
-        /*
-        services.Scan(scan => scan
-            .FromAssemblies(assembly)
-            .AddClasses(classes => classes
-                .Where(t =>
-                    t.Namespace != null &&
-                    t.Namespace.StartsWith("Application.Features.") && // 🔍 solo dentro de Features
-                    t.Namespace.EndsWith(".Services") &&               // 🔍 solo carpetas Services
-                    t.Name.EndsWith("Service")                         // 🔍 solo clases terminadas en Service
-                )
-            )
-            .AsImplementedInterfaces()
-            .WithScopedLifetime()
-        );
-        */
-
         // ✅ Validación básica (opcional)
         ValidateDependencies(services);
         return services;

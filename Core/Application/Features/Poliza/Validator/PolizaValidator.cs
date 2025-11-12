@@ -1,11 +1,5 @@
-﻿using Application.Features.Cliente.Commands.Create;
-using Application.Features.Poliza.Commands;
+﻿using Application.Features.Poliza.Commands;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Poliza.Validator
 {

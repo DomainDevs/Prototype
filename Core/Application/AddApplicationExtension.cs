@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
 using MediatR;
-using Application.Features.Localidad.Services;
 using Application.DependencyInjection;
 
 namespace Application;
@@ -15,14 +14,14 @@ public static class AddApplicationExtension
         
         var assembly = Assembly.GetExecutingAssembly();
 
-        //no se necesita, services.AddScoped<Application.Features.Properties.Queries.GetPropertyQueryHandler>(); es redundante
+        // No se necesita, services.AddScoped<Application.Features.Properties.Queries.GetPropertyQueryHandler>(); es redundante
         // Registra automáticamente todos los Commands, Queries y Handlers
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
         // Aquí podrías agregar FluentValidation si lo usas
         services.AddValidatorsFromAssembly(assembly);
 
-        //Inyectar el PipelineBehavior, este podría analizar si existe algun proceso de validación y ejecutar las reglas respectivas.
+        // Inyectar el PipelineBehavior, este podría analizar si existe algun proceso de validación y ejecutar las reglas respectivas.
         services.AddTransient(
             typeof(IPipelineBehavior<,>),
             typeof(Application.Common.Behaviors.ValidationBehavior<,>)
