@@ -15,6 +15,17 @@ public class ValidationBehavior<TRequest, TResponse>
         _validators = validators;
     }
 
+
+    /// <summary>
+    /// Actúa como un 'Pipeline Behavior' de MediatR.
+    /// Este patrón se utiliza para interceptar y ejecutar lógica (en este caso, validación)
+    /// antes de que una solicitud (Request/Command/Query) de MediatR sea manejada por su respectivo Handler.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="next"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    /// <exception cref="ControlValidationException"></exception>
     public async Task<TResponse> Handle(
         TRequest request,
         RequestHandlerDelegate<TResponse> next,
@@ -28,6 +39,7 @@ public class ValidationBehavior<TRequest, TResponse>
                 _validators.Select(v => v.ValidateAsync(context, cancellationToken))
             );
 
+            //Consolidación de Errores
             var failures = validationResults
                 .SelectMany(result => result.Errors)
                 .Where(f => f != null)
