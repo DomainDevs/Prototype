@@ -26,8 +26,10 @@ internal static class AddConfigureDataToolkit
         services.AddScoped<IDbConnection>(sp => new SqlConnection(conStringSQl));
         // Si quieres inyectar ISqlExecutor también
         services.AddScoped<ISqlExecutor>(sp => sp.GetRequiredService<SqlExecutor>());
+
+
         //Conexion simple una BD
-        services.AddDataToolkitSqlServer(configuration.GetConnectionString("SqlServer")!);
+        //services.AddDataToolkitSqlServer(configuration.GetConnectionString("SqlServer")!);
 
         #region multipleBD
         //Conexion multiples BD
@@ -39,7 +41,7 @@ internal static class AddConfigureDataToolkit
         services.AddDataToolkitWith(options =>
         {
             options.AddConnection("SqlServer", conStringSQl, DatabaseProvider.SqlServer);
-            //options.AddConnection("Sybase", conSybase, DatabaseProvider.Sybase);
+            options.AddConnection("Sybase", conSybase, DatabaseProvider.Sybase);
             options.DefaultAlias = "SqlServer";
         });
         */
