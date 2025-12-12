@@ -21,7 +21,8 @@ public static class AddPersistenceExtension
 
         services
             .AddDataToolkit(config)
-            .AddRepositories();
+            .AddRepositories()
+            .AddQueryEngine();
 
         return services;
     }

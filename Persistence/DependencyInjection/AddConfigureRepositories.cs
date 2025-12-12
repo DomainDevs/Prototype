@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Domain.Interfaces;
-using DataToolkit.Library.Repositories;
-using Persistence.Repositories;
 using System.Reflection;
+using Application.Interfaces;
 
 namespace Persistence.DependencyInjection;
 
@@ -28,6 +26,7 @@ internal static class AddConfigureRepositories
         );
 
         ValidateRepositories(services);
+
         return services;
     }
 

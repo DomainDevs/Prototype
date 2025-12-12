@@ -26,7 +26,8 @@ public class QueryEngine : IQueryEngine
     // ------------------------------------------------------
     public async Task<IEnumerable<T>> QueryMultiMapAsync<T>(object request)
     {
-        var mmRequest = (MultiMapRequest)request;
+        if (request is not MultiMapRequest mmRequest)
+            throw new ArgumentException("Invalid MultiMapRequest object.", nameof(request));
 
         return await _executor.FromSqlMultiMapAsync<T>(mmRequest);
     }
