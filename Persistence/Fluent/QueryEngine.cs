@@ -1,8 +1,8 @@
 ﻿using DataToolkit.Library.Common;     // MultiMapRequest
 using DataToolkit.Library.Sql;        // ISqlExecutor
-using Application.Interfaces;         // IQueryEngine
+using Application.Interfaces;
 
-namespace Persistence.QueryEngine;
+namespace Persistence.Fluent;
 
 public class QueryEngine : IQueryEngine
 {

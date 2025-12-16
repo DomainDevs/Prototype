@@ -3,7 +3,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataToolkit.Library.Sql;
-using Persistence.QueryEngine;
+using Persistence.Fluent;
 
 namespace TestSolution;
 
