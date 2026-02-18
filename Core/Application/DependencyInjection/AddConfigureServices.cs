@@ -29,6 +29,18 @@ public static class AddConfigureServices
             .WithScopedLifetime()
         );
 
+        // Registrar UseCases
+        services.Scan(scan => scan
+            .FromAssemblies(Assembly.GetExecutingAssembly())
+            .AddClasses(c => c
+                .Where(t => t.Namespace != null &&
+                            t.Namespace.StartsWith("Application.UseCase") &&
+                            t.Name.EndsWith("UseCase"))
+            )
+            .AsSelf()  // Se inyectan como su propia clase
+            .WithScopedLifetime()
+        );
+
         // ✅ Validación básica (opcional)
         ValidateDependencies(services);
         return services;

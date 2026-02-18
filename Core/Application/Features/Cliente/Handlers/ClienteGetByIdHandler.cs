@@ -3,8 +3,8 @@ using MediatR;
 using Domain.Interfaces;
 using Application.Features.Cliente.DTOs;
 using Application.Features.Cliente.Mappers;
-using Application.Features.Cliente.Queries;
 using Entities = Domain.Entities;
+using Application.Features.Cliente.Queries;
 
 namespace Application.Features.Cliente.Handlers;
 

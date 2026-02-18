@@ -25,6 +25,18 @@ internal static class AddConfigureRepositories
             .WithScopedLifetime()
         );
 
+        // Registrar queries
+        services.Scan(scan => scan
+            .FromAssemblies(Assembly.GetExecutingAssembly())
+            .AddClasses(c => c
+                .Where(t => t.Namespace != null &&
+                            t.Namespace.Contains("Persistence.Queries") &&
+                            t.Name.EndsWith("Query"))
+            )
+            .AsSelf() // queries normalmente no implementan interfaces
+            .WithScopedLifetime()
+        );
+
         ValidateRepositories(services);
 
         return services;

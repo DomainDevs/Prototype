@@ -17,12 +17,11 @@ public static class AddPersistenceExtension
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
     {
         //Si quieres inyectar por interfaz en vez de tipo de conexion concreto
-        services.AddScoped<ISqlExecutor>(sp => sp.GetRequiredService<SqlExecutor>());
+        //services.AddScoped<ISqlExecutor>(sp => sp.GetRequiredService<SqlExecutor>());
 
         services
             .AddDataToolkit(config)
-            .AddRepositories()
-            .AddQueryEngine();
+            .AddRepositories();
 
         return services;
     }
