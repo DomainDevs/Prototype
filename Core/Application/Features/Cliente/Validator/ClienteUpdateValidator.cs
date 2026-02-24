@@ -10,8 +10,11 @@ public class ClienteUpdateValidator : AbstractValidator<ClienteUpdateCommand>
     {
 
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("El campo Email es obligatorio.");
-        RuleFor(x => x.Email)
-            .MaximumLength(50).WithMessage("El campo Email no puede exceder 50 caracteres.");
+            .NotEmpty()
+                .WithMessage("El campo Email es obligatorio.")
+            .MaximumLength(50)
+                .WithMessage("El campo Email no puede exceder 50 caracteres.")
+            .EmailAddress()
+                .WithMessage("El formato del Email no es válido.");
     }
 }

@@ -39,10 +39,10 @@ public class PolizaRepository : IPolizaRepository
             MapFunction = objects =>
             {
                 // Aquí haces el mapeo de objetos al modelo final
-                var poliza = (Polizas)objects[0];
-                var ext = (PolizaExt)objects[1];
-                var riesgo = (PolizaRiesgos)objects[2];
-                var cobertura = (PolizaCoberturas)objects[3];
+                Polizas poliza = (Polizas)objects[0];
+                PolizaExt ext = (PolizaExt)objects[1];
+                PolizaRiesgos riesgo = (PolizaRiesgos)objects[2];
+                PolizaCoberturas cobertura = (PolizaCoberturas)objects[3];
 
                 // Por ejemplo, agregar los hijos al padre
                 poliza.PolizaExt = ext;

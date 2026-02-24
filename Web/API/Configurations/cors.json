@@ -1,6 +1,7 @@
 {
   "CorsSettings": {
-    "Vue": "http://localhost:5173",
-    "Blazor": "https://localhost:5002;https://www.mydomain.my"
+    "Vue": "http://localhost:5173;https://localhost:5173",
+    "Blazor": "https://localhost:5002;https://www.mydomain.my",
+    "API": "https://localhost:7109;https://localhost:7109"
   }
 }

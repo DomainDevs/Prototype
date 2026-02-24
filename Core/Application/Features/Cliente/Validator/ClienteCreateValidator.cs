@@ -8,6 +8,7 @@ public class ClienteCreateValidator : AbstractValidator<ClienteCreateCommand>
 {
     public ClienteCreateValidator()
     {
+        /*
         RuleFor(x => x.Id)
             .NotEmpty().WithMessage("El campo Id es obligatorio.");
         RuleFor(x => x.Id)
@@ -24,5 +25,6 @@ public class ClienteCreateValidator : AbstractValidator<ClienteCreateCommand>
             .MaximumLength(50).WithMessage("El campo Email no puede exceder 50 caracteres.");
         RuleFor(x => x.Ciudad)
             .MaximumLength(200).WithMessage("El campo Ciudad no puede exceder 200 caracteres.");
+        */
     }
 }

@@ -12,6 +12,7 @@ try
 
     builder.Services.AddControllers();                          //Cargar controllers
     builder.Services.AddInfrastructure(builder.Configuration);  //Inyectar capa infraestructura
+
     builder.Services.AddPersistence(builder.Configuration);     //Inyectar capa persistencia
     builder.Services.AddApplication();                          //inyectar capa de aplicación
 

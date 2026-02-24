@@ -20,12 +20,40 @@ internal static class AddConfiguredCors
         if (!string.IsNullOrWhiteSpace(corsSettings.Vue))
             origins.AddRange(corsSettings.Vue.Split(';', StringSplitOptions.RemoveEmptyEntries));
 
+        if (!string.IsNullOrWhiteSpace(corsSettings.API))
+            origins.AddRange(corsSettings.API.Split(';', StringSplitOptions.RemoveEmptyEntries));
+
+        // Esta función limpia espacios en blanco que puedan venir del JSON
+        void ParseAndAdd(string? setting)
+        {
+            if (!string.IsNullOrWhiteSpace(setting))
+            {
+                var parts = setting.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                                   .Select(o => o.Trim()); // <--- ESTO ES LO CLAVE
+                origins.AddRange(parts);
+            }
+        }
+
+        ParseAndAdd(corsSettings.Blazor);
+        ParseAndAdd(corsSettings.Vue);
+        ParseAndAdd(corsSettings.API);
+        /*
         services.AddCors(opt =>
             opt.AddPolicy(CorsPolicy, policy =>
                 policy.AllowAnyHeader()
                       .AllowAnyMethod()
                       .AllowCredentials()
                       .WithOrigins(origins.ToArray())));
+        */
+        services.AddCors(opt =>
+            opt.AddPolicy(CorsPolicy, policy =>
+                policy.WithOrigins(origins.Where(o => !string.IsNullOrWhiteSpace(o)) // Quita nulos
+                                          .Select(o => o.Trim().TrimEnd('/'))        // Limpia espacios y slashes
+                                          .Distinct()                               // ¡Quita los duplicados!
+                                          .ToArray())
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowCredentials()));
 
         return services;
     }

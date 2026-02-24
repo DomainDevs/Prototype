@@ -33,7 +33,7 @@ namespace Persistence.Queries
                 .Where("p.Id_pv = @IdPv")
                 .WhereIf(idPv.HasValue, "p.Id_pv = @IdPv")
                 .WhereIf(codRiesgo.HasValue, "pr.Cod_Riesgo = @CodRiesgo")
-                .WhereIf(soloActivas == true, "p.Estado = 'ACTIVA'")
+                //.WhereIf(soloActivas == true, "p.Estado = 'ACTIVA'")
                 .ToSql();
         }
     }
