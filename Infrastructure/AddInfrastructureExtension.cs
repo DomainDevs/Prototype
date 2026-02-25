@@ -33,7 +33,7 @@ public static class AddInfrastructureExtension
             .UseHttpsRedirection()              // 1. Fuerza HTTPS
             .UseErrorHandler()                  // 2. ✅ Manejo global de errores
             .UseRouting()                       // 3. Middleware de routing
-            .UseCors("CorsPolicy")                          // 4. CORS antes de Auth: Middleware de CORS
+            .UseCors()                          // 4. CORS antes de Auth: Middleware de CORS
             .UseAuthentication()                // 5. Auth: Middleware de autenticación
             .UseAuthorization()                 // 6. Authorization: Middleware de autorización
             .UseOpenApiDocumentation(config);    // 7. Swagger (último de los middlewares extra)
