@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.StaticFiles;
 using Shared.Interfaces;
 using Shared.DTOs;
+using Shared.Helpers;
 using Microsoft.Extensions.Options;
 using Infrastructure.Configuration;
+
 
 namespace Infrastructure.Services;
 
@@ -24,6 +26,9 @@ public class FileStorageService : IFileStorageService
 
     public async Task<UploadFileResponse> SaveFileAsync(string groupName, string fileName, byte[] content)
     {
+        string extension = Path.GetExtension(fileName).ToLower();
+        string shortId = GuidExtensions.GenerateShortId();
+
         if (string.IsNullOrWhiteSpace(groupName))
             throw new ArgumentException("El nombre del grupo no puede estar vacío.", nameof(groupName));
 
@@ -56,7 +61,9 @@ public class FileStorageService : IFileStorageService
         }
 
         // Nombre de archivo seguro
-        var safeFileName = Path.GetFileName(fileName);
+        //var safeFileName = Path.GetFileName(fileName);
+        //var fullPath = Path.Combine(folder, safeFileName);
+        var safeFileName = $"{shortId}{extension}";
         var fullPath = Path.Combine(folder, safeFileName);
 
         try

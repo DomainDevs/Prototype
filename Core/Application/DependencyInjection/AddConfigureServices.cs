@@ -12,7 +12,8 @@ public static class AddConfigureServices
 
         //dotnet add package Scrutor (permite adicionar la función Scan).
         // 🔍 Escaneo automático de todos los servicios y repositorios
-        var assembly = Assembly.GetExecutingAssembly();
+        //var assembly = Assembly.GetExecutingAssembly();
+        var assembly = typeof(AddApplicationExtension).Assembly;
 
         // Registra todos los *Service
         services.Scan(scan => scan

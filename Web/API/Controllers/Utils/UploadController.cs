@@ -22,7 +22,7 @@ public class UploadController : ControllerBase
     /// <param name="files">Archivos enviados desde el cliente</param>
     /// <param name="groupName">Grupo de configuración (ej: Images, PDF)</param>
     [HttpPost]
-    [RequestSizeLimit(long.MaxValue)]
+    [RequestSizeLimit(6_000_000)] //[RequestSizeLimit(10_000_000)] //[RequestSizeLimit(long.MaxValue)]
     public async Task<IActionResult> UploadFiles(
         [FromForm] IFormFileCollection files,
         [FromForm] string groupName)
@@ -65,7 +65,7 @@ public class UploadController : ControllerBase
                 {
                     FileName = file.FileName,
                     Url = string.Empty,
-                    ContentType = string.Empty,
+                    ContentType = string.Empty + ex.Message.ToString(),
                     Size = 0
                 });
             }

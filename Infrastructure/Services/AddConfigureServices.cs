@@ -10,14 +10,13 @@ namespace Infrastructure.Services;
 /// <summary>
 /// Extensión para inyectar servicios relacionados con almacenamiento de archivos.
 /// </summary>
-public static class ConfigureFileStorage
+public static class AddConfigureServices
 {
-    public static IServiceCollection AddFileStorageService(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddService(this IServiceCollection services, IConfiguration config)
     {
-        //services.AddScoped<IFileStorageService, FileStorageService>();
-        services.Configure<UploadOptions>(
-            config.GetSection("UploadOptions")
-        );
+
+        services           
+            .Configure<UploadOptions>(config.GetSection("UploadOptions"));
 
         services.AddScoped<IFileStorageService, FileStorageService>();
 

@@ -34,8 +34,8 @@ internal static class AddConfiguredCors
             }
         }
 
-        ParseAndAdd(corsSettings.Blazor);
         ParseAndAdd(corsSettings.Vue);
+        ParseAndAdd(corsSettings.Blazor);
         ParseAndAdd(corsSettings.API);
         /*
         services.AddCors(opt =>

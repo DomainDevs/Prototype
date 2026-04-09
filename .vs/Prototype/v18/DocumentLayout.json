@@ -1,0 +1,346 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Devs\\Core\\Empresa\\Prototype\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\core\\application\\dependencyinjection\\addconfigureservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\dependencyinjection\\addconfigureservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\web\\api\\controllers\\utils\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\controllers\\utils\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\cors\\addconfiguredcors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\cors\\addconfiguredcors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\web\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|c:\\devs\\core\\empresa\\prototype\\persistence\\queries\\getpolizacompletaquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84EF65CF-4B77-4813-A8FA-7ECBB4714601}|Persistence\\Persistence.csproj|solutionrelative:persistence\\queries\\getpolizacompletaquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\web\\api\\configurations\\imgupload.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\configurations\\imgupload.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\web\\api\\configurations\\cors.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\configurations\\cors.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\services\\filestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\filestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\core\\application\\features\\upload\\handlers\\uploadfilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\upload\\handlers\\uploadfilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7639FCC6-C23F-4BB1-9C0C-891245F7A258}|Core\\Shared\\Shared.csproj|c:\\devs\\core\\empresa\\prototype\\core\\shared\\interfaces\\ifilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7639FCC6-C23F-4BB1-9C0C-891245F7A258}|Core\\Shared\\Shared.csproj|solutionrelative:core\\shared\\interfaces\\ifilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\addinfrastructureextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\addinfrastructureextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\services\\addconfigurefilestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\addconfigurefilestorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\middlewares\\addmiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\middlewares\\addmiddlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|c:\\devs\\core\\empresa\\prototype\\web\\api\\configurations\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{430660E7-0620-41B5-8AA0-0C6EC277F589}|Web\\API\\API.csproj|solutionrelative:web\\api\\configurations\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\configuration\\uploadoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configuration\\uploadoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|c:\\devs\\core\\empresa\\prototype\\infrastructure\\cors\\corssettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63814A09-4D2F-416A-B37A-EDB5DF5D9604}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\cors\\corssettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7639FCC6-C23F-4BB1-9C0C-891245F7A258}|Core\\Shared\\Shared.csproj|c:\\devs\\core\\empresa\\prototype\\core\\shared\\dtos\\uploadfileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7639FCC6-C23F-4BB1-9C0C-891245F7A258}|Core\\Shared\\Shared.csproj|solutionrelative:core\\shared\\dtos\\uploadfileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\addapplicationextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|c:\\devs\\core\\empresa\\prototype\\core\\application\\features\\poliza\\handlers\\pvheadercreatehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D662F00-9763-43F6-8ACE-A230B1E63647}|Core\\Application\\Application.csproj|solutionrelative:core\\application\\features\\poliza\\handlers\\pvheadercreatehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 245,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddConfigureServices.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\DependencyInjection\\AddConfigureServices.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\DependencyInjection\\AddConfigureServices.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\DependencyInjection\\AddConfigureServices.cs",
+              "RelativeToolTip": "Core\\Application\\DependencyInjection\\AddConfigureServices.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:16:40.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UploadController.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Controllers\\Utils\\UploadController.cs",
+              "RelativeDocumentMoniker": "Web\\API\\Controllers\\Utils\\UploadController.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Controllers\\Utils\\UploadController.cs",
+              "RelativeToolTip": "Web\\API\\Controllers\\Utils\\UploadController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IFileStorageService.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Shared\\Interfaces\\IFileStorageService.cs",
+              "RelativeDocumentMoniker": "Core\\Shared\\Interfaces\\IFileStorageService.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Shared\\Interfaces\\IFileStorageService.cs",
+              "RelativeToolTip": "Core\\Shared\\Interfaces\\IFileStorageService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UploadFileHandler.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\Features\\Upload\\Handlers\\UploadFileHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Upload\\Handlers\\UploadFileHandler.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\Features\\Upload\\Handlers\\UploadFileHandler.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Upload\\Handlers\\UploadFileHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddMiddlewareExtensions.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Middlewares\\AddMiddlewareExtensions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Middlewares\\AddMiddlewareExtensions.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Middlewares\\AddMiddlewareExtensions.cs",
+              "RelativeToolTip": "Infrastructure\\Middlewares\\AddMiddlewareExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Program.cs",
+              "RelativeDocumentMoniker": "Web\\API\\Program.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Program.cs",
+              "RelativeToolTip": "Web\\API\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddConfiguredCors.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Cors\\AddConfiguredCors.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Cors\\AddConfiguredCors.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Cors\\AddConfiguredCors.cs",
+              "RelativeToolTip": "Infrastructure\\Cors\\AddConfiguredCors.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAEwDYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetPolizaCompletaQuery.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Persistence\\Queries\\GetPolizaCompletaQuery.cs",
+              "RelativeDocumentMoniker": "Persistence\\Queries\\GetPolizaCompletaQuery.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Persistence\\Queries\\GetPolizaCompletaQuery.cs",
+              "RelativeToolTip": "Persistence\\Queries\\GetPolizaCompletaQuery.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAmwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T13:27:02.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "imgupload.json",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\imgupload.json",
+              "RelativeDocumentMoniker": "Web\\API\\Configurations\\imgupload.json",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\imgupload.json",
+              "RelativeToolTip": "Web\\API\\Configurations\\imgupload.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-01T13:26:04.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "cors.json",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\cors.json",
+              "RelativeDocumentMoniker": "Web\\API\\Configurations\\cors.json",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\cors.json",
+              "RelativeToolTip": "Web\\API\\Configurations\\cors.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-25T22:55:22.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FileStorageService.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Services\\FileStorageService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\FileStorageService.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Services\\FileStorageService.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\FileStorageService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddConfigureFileStorage.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Services\\AddConfigureFileStorage.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\AddConfigureFileStorage.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Services\\AddConfigureFileStorage.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\AddConfigureFileStorage.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ErrorHandlerMiddleware.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Middlewares\\ErrorHandlerMiddleware.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Middlewares\\ErrorHandlerMiddleware.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Middlewares\\ErrorHandlerMiddleware.cs",
+              "RelativeToolTip": "Infrastructure\\Middlewares\\ErrorHandlerMiddleware.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddInfrastructureExtension.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\AddInfrastructureExtension.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\AddInfrastructureExtension.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\AddInfrastructureExtension.cs",
+              "RelativeToolTip": "Infrastructure\\AddInfrastructureExtension.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAApwB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\Startup.cs",
+              "RelativeDocumentMoniker": "Web\\API\\Configurations\\Startup.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Web\\API\\Configurations\\Startup.cs",
+              "RelativeToolTip": "Web\\API\\Configurations\\Startup.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAlwCkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UploadOptions.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Configuration\\UploadOptions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configuration\\UploadOptions.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Configuration\\UploadOptions.cs",
+              "RelativeToolTip": "Infrastructure\\Configuration\\UploadOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CorsSettings.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Cors\\CorsSettings.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Cors\\CorsSettings.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Infrastructure\\Cors\\CorsSettings.cs",
+              "RelativeToolTip": "Infrastructure\\Cors\\CorsSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UploadFileResponse.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Shared\\DTOs\\UploadFileResponse.cs",
+              "RelativeDocumentMoniker": "Core\\Shared\\DTOs\\UploadFileResponse.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Shared\\DTOs\\UploadFileResponse.cs",
+              "RelativeToolTip": "Core\\Shared\\DTOs\\UploadFileResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AddApplicationExtension.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\AddApplicationExtension.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\AddApplicationExtension.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\AddApplicationExtension.cs",
+              "RelativeToolTip": "Core\\Application\\AddApplicationExtension.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PvHeaderCreateHandler.cs",
+              "DocumentMoniker": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\Features\\Poliza\\Handlers\\PvHeaderCreateHandler.cs",
+              "RelativeDocumentMoniker": "Core\\Application\\Features\\Poliza\\Handlers\\PvHeaderCreateHandler.cs",
+              "ToolTip": "C:\\Devs\\Core\\Empresa\\Prototype\\Core\\Application\\Features\\Poliza\\Handlers\\PvHeaderCreateHandler.cs",
+              "RelativeToolTip": "Core\\Application\\Features\\Poliza\\Handlers\\PvHeaderCreateHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:55:22.58Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

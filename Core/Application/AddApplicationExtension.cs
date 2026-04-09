@@ -11,8 +11,7 @@ public static class AddApplicationExtension
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        
-        var assembly = Assembly.GetExecutingAssembly();
+        var assembly = typeof(AddApplicationExtension).Assembly;
 
         // No se necesita, services.AddScoped<Application.Features.Properties.Queries.GetPropertyQueryHandler>(); es redundante
         // Registra automáticamente todos los Commands, Queries y Handlers
