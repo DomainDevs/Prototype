@@ -1,4 +1,5 @@
-﻿using Infrastructure.Configuration;
+﻿using Application.Features.Location.Interfaces;
+using Infrastructure.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -15,10 +16,11 @@ public static class AddConfigureServices
     public static IServiceCollection AddService(this IServiceCollection services, IConfiguration config)
     {
 
-        services           
-            .Configure<UploadOptions>(config.GetSection("UploadOptions"));
-
+        services.Configure<UploadOptions>(config.GetSection("UploadOptions"));
+        services.AddHttpClient<IGeocodingService, LocationIqGeocodingService>();
         services.AddScoped<IFileStorageService, FileStorageService>();
+        
+
 
         return services;
     }

@@ -2,6 +2,7 @@
 using Application.Features.Location.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class LocationIqGeocodingService : IGeocodingService
 {
@@ -48,9 +49,16 @@ public class LocationIqGeocodingService : IGeocodingService
 
     private class LocationIqResult
     {
+        [JsonPropertyName("place_id")]
         public string PlaceId { get; set; }
+
+        [JsonPropertyName("lat")]
         public string Lat { get; set; }
+
+        [JsonPropertyName("lon")]
         public string Lon { get; set; }
+
+        [JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
     }
 }

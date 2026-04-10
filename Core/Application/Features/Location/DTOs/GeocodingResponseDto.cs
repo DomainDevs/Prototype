@@ -7,15 +7,6 @@ public class GeocodingResponseDto
     //[JsonPropertyName("id")]
     public int Id { get; set; }
 
-    [JsonPropertyName("pais")]
-    public string Pais { get; set; } = "";
-
-    [JsonPropertyName("municipio")]
-    public string Municipio { get; set; } = "";
-
-    [JsonPropertyName("direccion")]
-    public string Direccion { get; set; } = "";
-
     [JsonPropertyName("latitude")]
     public double Latitude { get; set; }
 
@@ -27,8 +18,5 @@ public class GeocodingResponseDto
 
     [JsonPropertyName("placeId")]
     public string PlaceId { get; set; } = "";
-
-    [JsonPropertyName("fechaConsulta")]
-    public DateTime FechaConsulta { get; set; }
 
 }
