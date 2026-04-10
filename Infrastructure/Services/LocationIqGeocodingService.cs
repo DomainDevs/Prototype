@@ -1,6 +1,8 @@
 ﻿using Application.Features.Location.DTOs;
 using Application.Features.Location.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -8,28 +10,25 @@ using System.Text.Json.Serialization;
 public class LocationIqGeocodingService : IGeocodingService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _apiKey;
-    private readonly int _rowCount;
-    private readonly string _baseUrl;
+    private readonly IConfiguration _configuration;
+    private readonly ILogger<LocationIqGeocodingService> _logger;
+    private readonly IMemoryCache _cache;
 
-    private static readonly JsonSerializerOptions _jsonOptions = new()
+    private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };
 
-    public LocationIqGeocodingService(HttpClient httpClient, IConfiguration configuration)
+    public LocationIqGeocodingService(
+        HttpClient httpClient,
+        IConfiguration configuration,
+        ILogger<LocationIqGeocodingService> logger,
+        IMemoryCache cache)
     {
         _httpClient = httpClient;
-
-        _apiKey = configuration["LocationIQ:ApiKey"]
-            ?? throw new ArgumentNullException(nameof(_apiKey), "LocationIQ:ApiKey no configurada");
-
-        _baseUrl = configuration["LocationIQ:Url"]
-            ?? throw new ArgumentNullException(nameof(_baseUrl), "LocationIQ:Url no configurada");
-
-        _rowCount = int.TryParse(configuration["LocationIQ:RowCount"], out var result)
-            ? result
-            : 5;
+        _configuration = configuration;
+        _logger = logger;
+        _cache = cache;
     }
 
     public async Task<List<GeocodingResponseDto>> GetCoordinatesAsync(
@@ -38,58 +37,161 @@ public class LocationIqGeocodingService : IGeocodingService
         string direccion,
         CancellationToken ct)
     {
-        var query = Uri.EscapeDataString($"{direccion} {municipio} {pais}");
+        var cacheKey = $"{pais}-{municipio}-{direccion}".ToLowerInvariant();
 
-        var url = BuildUrl(query);
-
-        using var response = await _httpClient.GetAsync(url, ct);
-        var content = await response.Content.ReadAsStringAsync(ct);
-
-        if (!response.IsSuccessStatusCode)
+        if (_cache.TryGetValue(cacheKey, out List<GeocodingResponseDto> cached))
         {
-            throw new HttpRequestException(
-                $"LocationIQ error {(int)response.StatusCode}: {content}");
+            _logger.LogInformation("Cache hit for {CacheKey}", cacheKey);
+            return cached;
         }
 
-        var data = JsonSerializer.Deserialize<List<LocationIqResult>>(content, _jsonOptions);
+        var apiKey = GetRequired("LocationIQ:ApiKey");
+        var baseUrl = GetRequired("LocationIQ:Url");
+        var limit = GetInt("LocationIQ:RowCount", 5);
 
-        if (data == null)
-            return new List<GeocodingResponseDto>();
+        var url = BuildUrl(baseUrl, apiKey, pais, municipio, direccion, limit);
+
+        var start = DateTime.UtcNow;
+
+        try
+        {
+            _logger.LogInformation("LocationIQ request started: {Url}", url);
+
+            using var response = await SendWithRetryAsync(url, ct);
+            var content = await response.Content.ReadAsStringAsync(ct);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogError("LocationIQ error {Status}: {Body}",
+                    (int)response.StatusCode, content);
+
+                throw new HttpRequestException($"LocationIQ error {(int)response.StatusCode}");
+            }
+
+            var result = Parse(content);
+
+            _cache.Set(cacheKey, result, TimeSpan.FromMinutes(30));
+
+            _logger.LogInformation(
+                "LocationIQ success in {Time}ms, results: {Count}",
+                (DateTime.UtcNow - start).TotalMilliseconds,
+                result.Count);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "LocationIQ failed");
+            throw;
+        }
+    }
+
+    // =========================
+    // HTTP WITH RETRY (simple, no Polly)
+    // =========================
+    private async Task<HttpResponseMessage> SendWithRetryAsync(
+        string url,
+        CancellationToken ct)
+    {
+        const int maxRetries = 2;
+
+        for (int i = 0; i <= maxRetries; i++)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(url, ct);
+
+                if (response.IsSuccessStatusCode)
+                    return response;
+
+                // retry only on transient errors
+                if ((int)response.StatusCode >= 500 && i < maxRetries)
+                {
+                    await Task.Delay(300 * (i + 1), ct);
+                    continue;
+                }
+
+                return response;
+            }
+            catch when (i < maxRetries)
+            {
+                await Task.Delay(300 * (i + 1), ct);
+            }
+        }
+
+        throw new HttpRequestException("Max retry attempts reached");
+    }
+
+    // =========================
+    // PARSE
+    // =========================
+    private List<GeocodingResponseDto> Parse(string json)
+    {
+        var data = JsonSerializer.Deserialize<List<LocationIqResult>>(json, JsonOptions)
+                   ?? [];
 
         var result = new List<GeocodingResponseDto>();
 
         foreach (var item in data)
         {
-            var dto = MapToDto(item);
-            if (dto != null)
+            if (TryMap(item, out var dto))
                 result.Add(dto);
         }
 
         return result;
     }
 
-    private string BuildUrl(string query)
+    // =========================
+    // MAPPING
+    // =========================
+    private static bool TryMap(LocationIqResult item, out GeocodingResponseDto dto)
     {
-        return $"{_baseUrl}?key={_apiKey}&q={query}&format=json&limit={_rowCount}";
-    }
+        dto = null!;
 
-    private static GeocodingResponseDto? MapToDto(LocationIqResult item)
-    {
         if (!double.TryParse(item.Lat, NumberStyles.Any, CultureInfo.InvariantCulture, out var lat) ||
             !double.TryParse(item.Lon, NumberStyles.Any, CultureInfo.InvariantCulture, out var lon))
-        {
-            return null;
-        }
+            return false;
 
-        return new GeocodingResponseDto
+        dto = new GeocodingResponseDto
         {
             PlaceId = item.PlaceId,
             DisplayName = item.DisplayName ?? string.Empty,
             Latitude = lat,
             Longitude = lon
         };
+
+        return true;
     }
 
+    // =========================
+    // URL BUILDER
+    // =========================
+    private static string BuildUrl(
+        string baseUrl,
+        string apiKey,
+        string pais,
+        string municipio,
+        string direccion,
+        int limit)
+    {
+        var query = Uri.EscapeDataString($"{direccion} {municipio} {pais}");
+
+        return $"{baseUrl}?key={apiKey}&q={query}&format=json&limit={limit}";
+    }
+
+    // =========================
+    // CONFIG HELPERS
+    // =========================
+    private string GetRequired(string key)
+        => _configuration[key]
+           ?? throw new ArgumentNullException(key);
+
+    private int GetInt(string key, int defaultValue)
+        => int.TryParse(_configuration[key], out var val) ? val : defaultValue;
+
+    // =========================
+    // MODEL
+    // =========================
     private class LocationIqResult
     {
         [JsonPropertyName("place_id")]
