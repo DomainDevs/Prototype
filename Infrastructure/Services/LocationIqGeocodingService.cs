@@ -1,6 +1,7 @@
 ﻿using Application.Features.Location.DTOs;
 using Application.Features.Location.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -9,62 +10,98 @@ public class LocationIqGeocodingService : IGeocodingService
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
     private readonly int _rowCount;
-    private readonly string _url;
+    private readonly string _baseUrl;
+
+    private static readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
 
     public LocationIqGeocodingService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
+
         _apiKey = configuration["LocationIQ:ApiKey"]
-                  ?? throw new ArgumentNullException("LocationIQ ApiKey no configurada");
-        var rowCountValue = configuration["LocationIQ:RowCount"];
-        _rowCount = int.TryParse(rowCountValue, out var result) ? result: 5;
-        _url = configuration["LocationIQ:Url"]
-                  ?? throw new ArgumentNullException("LocationIQ ApiKey no configurada");
+            ?? throw new ArgumentNullException(nameof(_apiKey), "LocationIQ:ApiKey no configurada");
+
+        _baseUrl = configuration["LocationIQ:Url"]
+            ?? throw new ArgumentNullException(nameof(_baseUrl), "LocationIQ:Url no configurada");
+
+        _rowCount = int.TryParse(configuration["LocationIQ:RowCount"], out var result)
+            ? result
+            : 5;
     }
 
     public async Task<List<GeocodingResponseDto>> GetCoordinatesAsync(
-        string pais, string municipio, string direccion, CancellationToken ct)
+        string pais,
+        string municipio,
+        string direccion,
+        CancellationToken ct)
     {
         var query = Uri.EscapeDataString($"{direccion} {municipio} {pais}");
-        var url = $"{_url}?key={_apiKey}&q={query}&format=json&limit={_rowCount}";
+
+        var url = BuildUrl(query);
 
         using var response = await _httpClient.GetAsync(url, ct);
+        var content = await response.Content.ReadAsStringAsync(ct);
 
         if (!response.IsSuccessStatusCode)
-            throw new HttpRequestException($"Error LocationIQ: {response.StatusCode}");
+        {
+            throw new HttpRequestException(
+                $"LocationIQ error {(int)response.StatusCode}: {content}");
+        }
 
-        var json = await response.Content.ReadAsStringAsync(ct);
+        var data = JsonSerializer.Deserialize<List<LocationIqResult>>(content, _jsonOptions);
 
-        var data = JsonSerializer.Deserialize<List<LocationIqResult>>(json,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
-            ?? new();
+        if (data == null)
+            return new List<GeocodingResponseDto>();
 
-        return data
-            .Where(x =>
-                double.TryParse(x.Lat, out _) &&
-                double.TryParse(x.Lon, out _))
-            .Select(x => new GeocodingResponseDto
-            {
-                PlaceId = x.PlaceId,
-                DisplayName = x.DisplayName ?? string.Empty,
-                Latitude = double.Parse(x.Lat),
-                Longitude = double.Parse(x.Lon)
-            })
-            .ToList();
+        var result = new List<GeocodingResponseDto>();
+
+        foreach (var item in data)
+        {
+            var dto = MapToDto(item);
+            if (dto != null)
+                result.Add(dto);
+        }
+
+        return result;
+    }
+
+    private string BuildUrl(string query)
+    {
+        return $"{_baseUrl}?key={_apiKey}&q={query}&format=json&limit={_rowCount}";
+    }
+
+    private static GeocodingResponseDto? MapToDto(LocationIqResult item)
+    {
+        if (!double.TryParse(item.Lat, NumberStyles.Any, CultureInfo.InvariantCulture, out var lat) ||
+            !double.TryParse(item.Lon, NumberStyles.Any, CultureInfo.InvariantCulture, out var lon))
+        {
+            return null;
+        }
+
+        return new GeocodingResponseDto
+        {
+            PlaceId = item.PlaceId,
+            DisplayName = item.DisplayName ?? string.Empty,
+            Latitude = lat,
+            Longitude = lon
+        };
     }
 
     private class LocationIqResult
     {
         [JsonPropertyName("place_id")]
-        public string PlaceId { get; set; }
+        public string PlaceId { get; set; } = string.Empty;
 
         [JsonPropertyName("lat")]
-        public string Lat { get; set; }
+        public string Lat { get; set; } = string.Empty;
 
         [JsonPropertyName("lon")]
-        public string Lon { get; set; }
+        public string Lon { get; set; } = string.Empty;
 
         [JsonPropertyName("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = string.Empty;
     }
 }
