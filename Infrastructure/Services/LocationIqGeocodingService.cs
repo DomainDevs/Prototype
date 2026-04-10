@@ -70,7 +70,7 @@ public class LocationIqGeocodingService : IGeocodingService
 
             var result = Parse(content);
 
-            _cache.Set(cacheKey, result, TimeSpan.FromMinutes(30));
+            _cache.Set(cacheKey, result, TimeSpan.FromMinutes(10));
 
             _logger.LogInformation(
                 "LocationIQ success in {Time}ms, results: {Count}",

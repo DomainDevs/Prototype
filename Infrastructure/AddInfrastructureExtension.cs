@@ -21,7 +21,8 @@ public static class AddInfrastructureExtension
             
             .AddOpenApiDocumentation(config)    // Configura Swagger / OpenAPI
             .AddService(config)   // 👈 AQUÍ ESTABA FALTANDO
-            .AddCorsPolicy(config)             // Configura políticas de CORS
+            .AddCorsPolicy(config)             // Configura políticas de
+            .AddMemoryCache()
             .AddHttpClient();
 
         return services;
