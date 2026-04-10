@@ -8,11 +8,17 @@ public class LocationIqGeocodingService : IGeocodingService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
+    private readonly int _rowCount;
+    private readonly string _url;
 
     public LocationIqGeocodingService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
         _apiKey = configuration["LocationIQ:ApiKey"]
+                  ?? throw new ArgumentNullException("LocationIQ ApiKey no configurada");
+        var rowCountValue = configuration["LocationIQ:RowCount"];
+        _rowCount = int.TryParse(rowCountValue, out var result) ? result: 5;
+        _url = configuration["LocationIQ:Url"]
                   ?? throw new ArgumentNullException("LocationIQ ApiKey no configurada");
     }
 
@@ -20,7 +26,7 @@ public class LocationIqGeocodingService : IGeocodingService
         string pais, string municipio, string direccion, CancellationToken ct)
     {
         var query = Uri.EscapeDataString($"{direccion} {municipio} {pais}");
-        var url = $"https://us1.locationiq.com/v1/search?key={_apiKey}&q={query}&format=json&limit=10";
+        var url = $"{_url}?key={_apiKey}&q={query}&format=json&limit={_rowCount}";
 
         using var response = await _httpClient.GetAsync(url, ct);
 

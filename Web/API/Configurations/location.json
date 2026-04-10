@@ -1,5 +1,7 @@
 ﻿{
   "LocationIQ": {
-    "ApiKey": "pk.21cc39d91ae48ec7d7a064d2e7241480"
+    "ApiKey": "pk.21cc39d91ae48ec7d7a064d2e7241480",
+    "RowCount": 10,
+    "Url": "https://us1.locationiq.com/v1/search"
   }
 }
