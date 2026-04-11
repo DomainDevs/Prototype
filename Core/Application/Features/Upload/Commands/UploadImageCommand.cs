@@ -14,6 +14,8 @@ public class UploadFileCommand : IRequest<UploadFileResponse>
     /// <summary>Nombre del archivo a subir</summary>
     public string FileName { get; set; } = string.Empty;
 
-    /// <summary>Contenido del archivo</summary>
-    public byte[] Content { get; set; } = Array.Empty<byte>();
+    /// <summary>
+    /// Stream del archivo (más eficiente que byte[])
+    /// </summary>
+    public Stream Content { get; set; } = default!;
 }
