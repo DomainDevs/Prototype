@@ -14,8 +14,8 @@ internal static class AddConfiguredCors
         var corsSettings = config.GetSection(nameof(CorsSettings)).Get<CorsSettings>() ?? new CorsSettings();
         var origins = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(corsSettings.Blazor))
-            origins.AddRange(corsSettings.Blazor.Split(';', StringSplitOptions.RemoveEmptyEntries));
+        if (!string.IsNullOrWhiteSpace(corsSettings.Phone))
+            origins.AddRange(corsSettings.Phone.Split(';', StringSplitOptions.RemoveEmptyEntries));
 
         if (!string.IsNullOrWhiteSpace(corsSettings.Vue))
             origins.AddRange(corsSettings.Vue.Split(';', StringSplitOptions.RemoveEmptyEntries));
@@ -35,7 +35,7 @@ internal static class AddConfiguredCors
         }
 
         ParseAndAdd(corsSettings.Vue);
-        ParseAndAdd(corsSettings.Blazor);
+        ParseAndAdd(corsSettings.Phone);
         ParseAndAdd(corsSettings.API);
         /*
         services.AddCors(opt =>
