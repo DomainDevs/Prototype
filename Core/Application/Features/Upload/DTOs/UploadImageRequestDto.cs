@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Upload.DTOs;
 
-public class UploadFileDto
+public class UploadImageRequestDto
 {
     /// <summary>Archivo recibido desde el frontend (ASP.NET)</summary>
     public IFormFileCollection Files { get; set; } = default!;

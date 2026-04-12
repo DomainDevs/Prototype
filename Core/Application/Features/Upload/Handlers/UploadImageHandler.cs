@@ -3,11 +3,11 @@ using MediatR;
 using Shared.DTOs;
 using Shared.Interfaces;
 
-public class UploadFileHandler : IRequestHandler<UploadFileCommand, UploadFileResponse>
+public class UploadImageHandler : IRequestHandler<UploadFileCommand, UploadFileResponse>
 {
     private readonly IFileStorageService _fileStorageService;
 
-    public UploadFileHandler(IFileStorageService fileStorageService)
+    public UploadImageHandler(IFileStorageService fileStorageService)
     {
         _fileStorageService = fileStorageService;
     }

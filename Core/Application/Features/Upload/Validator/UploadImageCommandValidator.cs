@@ -3,12 +3,12 @@ using Application.Features.Upload.Commands;
 
 namespace Application.Features.Upload.Validator;
 
-public class UploadFileCommandValidator : AbstractValidator<UploadFileCommand>
+public class UploadImageCommandValidator : AbstractValidator<UploadFileCommand>
 {
     private readonly string[] _allowedExtensions =
         { ".jpg", ".jpeg", ".png", ".webp", ".heif", ".heic" };
 
-    public UploadFileCommandValidator()
+    public UploadImageCommandValidator()
     {
         RuleFor(x => x.GroupName)
             .NotEmpty().WithMessage("Debe especificarse un grupo de configuración válido.");
