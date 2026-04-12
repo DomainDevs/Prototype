@@ -6,7 +6,7 @@ namespace Application.Features.Upload.Commands;
 /// <summary>
 /// Comando para subir cualquier archivo usando un grupo de configuración.
 /// </summary>
-public class UploadFileCommand : IRequest<UploadFileResponse>
+public class UploadImageCommand : IRequest<UploadFileResponse>
 {
     /// <summary>Nombre del grupo de configuración definido en upload.json (ej: "Images", "PDF")</summary>
     public string GroupName { get; set; } = string.Empty;

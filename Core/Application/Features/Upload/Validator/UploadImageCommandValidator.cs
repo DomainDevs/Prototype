@@ -3,7 +3,7 @@ using Application.Features.Upload.Commands;
 
 namespace Application.Features.Upload.Validator;
 
-public class UploadImageCommandValidator : AbstractValidator<UploadFileCommand>
+public class UploadImageCommandValidator : AbstractValidator<UploadImageCommand>
 {
     private readonly string[] _allowedExtensions =
         { ".jpg", ".jpeg", ".png", ".webp", ".heif", ".heic" };

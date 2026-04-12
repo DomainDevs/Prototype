@@ -3,7 +3,7 @@ using MediatR;
 using Shared.DTOs;
 using Shared.Interfaces;
 
-public class UploadImageHandler : IRequestHandler<UploadFileCommand, UploadFileResponse>
+public class UploadImageHandler : IRequestHandler<UploadImageCommand, UploadFileResponse>
 {
     private readonly IFileStorageService _fileStorageService;
 
@@ -12,7 +12,7 @@ public class UploadImageHandler : IRequestHandler<UploadFileCommand, UploadFileR
         _fileStorageService = fileStorageService;
     }
 
-    public async Task<UploadFileResponse> Handle(UploadFileCommand request, CancellationToken cancellationToken)
+    public async Task<UploadFileResponse> Handle(UploadImageCommand request, CancellationToken cancellationToken)
     {
         // Solo se pasa el groupName
         return await _fileStorageService.SaveFileAsync(
