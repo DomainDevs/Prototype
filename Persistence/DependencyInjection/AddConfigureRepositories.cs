@@ -1,62 +1,64 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Application.Interfaces;
 
 namespace Persistence.DependencyInjection;
 
 internal static class AddConfigureRepositories
 {
-    /// <summary>
-    /// Archivo para proceso de inyección de repositorios, parte de infraestructura.
-    /// Por lo general deben ser de tipo AddScoped, debido a que DbContext es AddScoped.
-    /// </summary>
-    internal static IServiceCollection AddRepositories(this IServiceCollection services)
+    internal static IServiceCollection AddRepositories(this IServiceCollection services, bool isDev,
+        bool enableVerboseLogs = false) // 🚩 Ver registro de repositorys
     {
-        // 🔍 Escaneo automático de todos los *Repository en el ensamblado actual
+        // Guardaremos los nombres en una lista local durante el escaneo 
+        // para no tener que buscar luego en todo el IServiceCollection
+        var registeredRepos = new List<string>();
+
         services.Scan(scan => scan
-            .FromAssemblies(Assembly.GetExecutingAssembly())
-            .AddClasses(c => c
-                .Where(t =>
-                    t.Namespace != null &&
-                    t.Namespace.Contains("Persistence.Repositories") &&
-                    t.Name.EndsWith("Repository"))
-            )
-            .AsImplementedInterfaces()
-            .WithScopedLifetime()
+            .FromAssemblies(typeof(AddConfigureRepositories).Assembly)
+
+            // Repositorios
+            .AddClasses(c => c.InNamespaces("Persistence.Repositories").Where(t => t.Name.EndsWith("Repository")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime()
+
+            // Queries
+            .AddClasses(c => c.InNamespaces("Persistence.Queries").Where(t => t.Name.EndsWith("Query")))
+                .AsSelf()
+                .WithScopedLifetime()
         );
 
-        // Registrar queries
-        services.Scan(scan => scan
-            .FromAssemblies(Assembly.GetExecutingAssembly())
-            .AddClasses(c => c
-                .Where(t => t.Namespace != null &&
-                            t.Namespace.Contains("Persistence.Queries") &&
-                            t.Name.EndsWith("Query"))
-            )
-            .AsSelf() // queries normalmente no implementan interfaces
-            .WithScopedLifetime()
-        );
+        // Optimizamos: Obtenemos solo los que pertenecen a nuestro namespace de Repositorios
+        // Esto es mucho más rápido que filtrar el IServiceCollection completo
+        if (isDev && enableVerboseLogs)
+        {
+            var repoNames = typeof(AddConfigureRepositories).Assembly.GetTypes()
+            .Where(t => t.IsClass && !t.IsAbstract &&
+                        t.Namespace == "Persistence.Repositories" &&
+                        t.Name.EndsWith("Repository"))
+            .Select(t => $"I{t.Name}") // Asumimos la convención IRepository
+            .OrderBy(n => n)
+            .ToList();
 
-        ValidateRepositories(services);
+            PrintDetails(repoNames);
+        }
 
         return services;
     }
 
-    /// <summary>
-    /// Validación opcional que muestra advertencias si algún repositorio no tiene su implementación registrada.
-    /// </summary>
-    private static void ValidateRepositories(IServiceCollection services)
+    private static void PrintDetails(List<string> repos)
     {
-        var registered = services
-            .Where(s => s.ServiceType.FullName?.Contains("Repository") == true)
-            .Select(s => s.ServiceType.Name)
-            .ToHashSet();
-
-        Console.WriteLine("🧩 [DI] Repositorios registrados automáticamente:");
-        foreach (var r in registered)
-            Console.WriteLine($"   → {r}");
-
-        if (registered.Count == 0)
-            Console.WriteLine("⚠️ No se detectaron repositorios. Verifica los namespaces o nombres.");
+        if (repos.Count > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("    🧩 [DI] Repositorios registrados automáticamente:");
+            foreach (var r in repos)
+                Console.WriteLine($"       → {r}");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("    ⚠️ [DI] No se detectaron repositorios en el ensamblado.");
+            Console.ResetColor();
+        }
     }
 }

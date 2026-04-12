@@ -1,94 +1,63 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.StaticFiles;
 using Shared.Interfaces;
 using Shared.DTOs;
 using Shared.Helpers;
 using Microsoft.Extensions.Options;
 using Infrastructure.Configuration;
-
+using Infrastructure.Images;
 
 namespace Infrastructure.Services;
 
-/// <summary>
-/// Servicio de almacenamiento seguro de archivos en el servidor.
-/// Valida extensiones, tamaño, existencia de carpeta y nombre seguro.
-/// </summary>
 public class FileStorageService : IFileStorageService
 {
     private readonly IWebHostEnvironment _env;
     private readonly UploadOptions _options;
+    private readonly IImageProcessor _imageProcessor;
 
-    public FileStorageService(IWebHostEnvironment env, IOptions<UploadOptions> options)
+    public FileStorageService(
+        IWebHostEnvironment env,
+        IOptions<UploadOptions> options,
+        IImageProcessor imageProcessor) // Inyectamos el nuevo procesador
     {
-        _env = env ?? throw new ArgumentNullException(nameof(env));
-        _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
+        _env = env;
+        _options = options.Value;
+        _imageProcessor = imageProcessor;
     }
 
-    public async Task<UploadFileResponse> SaveFileAsync(string groupName, string fileName, byte[] content)
+    public async Task<UploadFileResponse> SaveFileAsync(string groupName, string fileName, Stream content)
     {
-        string extension = Path.GetExtension(fileName).ToLower();
-        string shortId = GuidExtensions.GenerateShortId();
-
-        if (string.IsNullOrWhiteSpace(groupName))
-            throw new ArgumentException("El nombre del grupo no puede estar vacío.", nameof(groupName));
-
-        if (string.IsNullOrWhiteSpace(fileName))
-            throw new ArgumentException("El nombre del archivo no puede estar vacío.", nameof(fileName));
-
+        // 1. Validar si el grupo existe
         if (!_options.UploadGroups.TryGetValue(groupName, out var group))
-            throw new ArgumentException($"El grupo '{groupName}' no existe en la configuración.");
+            throw new ArgumentException($"El grupo '{groupName}' no existe.");
 
-        // Validar extensión
-        var ext = Path.GetExtension(fileName)?.ToLower();
-        if (string.IsNullOrEmpty(ext) || !group.AllowedExtensions.Contains(ext))
-            throw new ArgumentException($"Extensión '{ext}' no permitida para el grupo '{groupName}'.");
+        // 2. Validación de extensión original (seguridad previa a la conversión)
+        var originalExtension = Path.GetExtension(fileName).ToLower();
+        if (string.IsNullOrEmpty(originalExtension) || !group.AllowedExtensions.Contains(originalExtension))
+            throw new ArgumentException($"Extensión '{originalExtension}' no permitida para este grupo.");
 
-        // Validar tamaño
-        if (content.Length > group.MaxFileSizeBytes)
-            throw new InvalidOperationException(
-                $"El archivo supera el tamaño máximo permitido ({group.MaxFileSizeBytes} bytes).");
+        // 3. Procesamiento y conversión a WebP
+        // El procesador se encarga de la lógica pesada de SkiaSharp
+        byte[] webpData = await _imageProcessor.ConvertToWebpAsync(content);
 
-        // Carpeta segura
-        var folder = Path.Combine(_env.WebRootPath ?? "", group.FolderPath);
-        try
-        {
-            if (!Directory.Exists(folder))
-                Directory.CreateDirectory(folder);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException($"No se pudo crear la carpeta '{folder}': {ex.Message}", ex);
-        }
+        // 4. Preparar rutas y nombres (Forzamos .webp)
+        var safeFileName = $"{GuidExtensions.GenerateShortId()}.webp";
+        var folder = Path.Combine(_env.WebRootPath ?? "wwwroot", group.FolderPath);
 
-        // Nombre de archivo seguro
-        //var safeFileName = Path.GetFileName(fileName);
-        //var fullPath = Path.Combine(folder, safeFileName);
-        var safeFileName = $"{shortId}{extension}";
+        if (!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+
         var fullPath = Path.Combine(folder, safeFileName);
 
-        try
-        {
-            await File.WriteAllBytesAsync(fullPath, content);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException($"Error guardando archivo '{safeFileName}' en '{folder}': {ex.Message}", ex);
-        }
+        // 5. Guardar los bytes procesados en disco
+        await File.WriteAllBytesAsync(fullPath, webpData);
 
-        // Determinar content type
-        var provider = new FileExtensionContentTypeProvider();
-        if (!provider.TryGetContentType(safeFileName, out var contentType))
-            contentType = "application/octet-stream";
-
-        // Construir URL
-        var url = Path.Combine("/", group.FolderPath.Replace("\\", "/"), safeFileName);
-
+        // 6. Retornar respuesta
         return new UploadFileResponse
         {
             FileName = safeFileName,
-            Url = url,
-            ContentType = contentType,
-            Size = content.Length
+            Url = Path.Combine("/", group.FolderPath, safeFileName).Replace("\\", "/"),
+            ContentType = "image/webp", // Siempre es webp
+            Size = webpData.Length      // El tamaño real de la imagen optimizada
         };
     }
 }

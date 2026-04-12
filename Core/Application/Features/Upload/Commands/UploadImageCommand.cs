@@ -14,8 +14,16 @@ public class UploadFileCommand : IRequest<UploadFileResponse>
     /// <summary>Nombre del archivo a subir</summary>
     public string FileName { get; set; } = string.Empty;
 
+    /// <summary>Tipo MIME (image/jpeg, image/png, etc.)</summary>
+    public string ContentType { get; set; } = string.Empty;
+
     /// <summary>
     /// Stream del archivo (más eficiente que byte[])
     /// </summary>
     public Stream Content { get; set; } = default!;
+
+    /// <summary>
+    /// Tamaño archivo
+    /// </summary>
+    public long Size { get; set; }
 }

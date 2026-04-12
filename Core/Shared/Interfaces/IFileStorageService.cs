@@ -8,13 +8,12 @@ namespace Shared.Interfaces;
 public interface IFileStorageService
 {
     /// <summary>
-    /// Guarda un archivo con validaciones personalizadas según los parámetros.
+    /// Guarda un archivo aplicando validaciones de grupo (extensiones, tamaño, ruta) 
+    /// definidas en la configuración.
     /// </summary>
-    /// <param name="fileName">Nombre del archivo a almacenar.</param>
-    /// <param name="content">Contenido en bytes.</param>
-    /// <param name="folderPath">Ruta relativa donde guardar el archivo.</param>
-    /// <param name="allowedExtensions">Lista de extensiones permitidas (ej. ".jpg", ".pdf").</param>
-    /// <param name="maxFileSizeBytes">Tamaño máximo permitido en bytes.</param>
-    /// <returns>Información del archivo guardado.</returns>
-    Task<UploadFileResponse> SaveFileAsync(string groupName, string fileName, byte[] content);
+    /// <param name="groupName">Nombre del grupo de configuración (ej. "Images", "PDF").</param>
+    /// <param name="fileName">Nombre original del archivo.</param>
+    /// <param name="content">Stream con el contenido del archivo.</param>
+    /// <returns>Información del archivo guardado (URL, nombre seguro, etc.).</returns>
+    Task<UploadFileResponse> SaveFileAsync(string groupName, string fileName, Stream content);
 }

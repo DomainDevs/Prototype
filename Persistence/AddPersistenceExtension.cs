@@ -12,16 +12,19 @@ namespace Persistence;
 public static class AddPersistenceExtension
 {
     /// <summary>
-    /// Registra DataToolkit con SQL Server y tus repositorios.
+    /// Registra DataToolkit (librería de conexión) y tus repositorios.
     /// </summary>
-    public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddPersistence(this IServiceCollection services,
+        IConfiguration config,
+        bool isDev,
+        bool enableVerboseLogs = false)
     {
-        //Si quieres inyectar por interfaz en vez de tipo de conexion concreto
-        //services.AddScoped<ISqlExecutor>(sp => sp.GetRequiredService<SqlExecutor>());
+        // 1. Configuración de motor/conexión
+        services.AddDataToolkit(config);
 
-        services
-            .AddDataToolkit(config)
-            .AddRepositories();
+        // 2. Registro de Repositorios 
+        //Visualizar diagnóstico si isDev = true y enableVerboseLogs = true para decidir si realmente imprimimos
+        services.AddRepositories(isDev, enableVerboseLogs);
 
         return services;
     }

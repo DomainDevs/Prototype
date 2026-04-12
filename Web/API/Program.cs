@@ -1,40 +1,65 @@
-using API.Configurations;
+﻿using API.Configurations;
 using Application;
 using Infrastructure;
 using Persistence;
 using Serilog;
+using Infrastructure.Common.Diagnostics;
+
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 try
 {
+    BootConsole.WriteBanner("[NAME]");
+
     var builder = WebApplication.CreateBuilder(args);
+    bool isDev = builder.Environment.IsDevelopment();
 
-    builder.Host.AddConfigurations();                           //Cargar archivos de configuraci�n json
+    BootConsole.Step("1/5", "Configurando Host y Serilog...");
+    builder.Host.AddConfigurations().UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
 
-    builder.Services.AddControllers();                          //Cargar controllers
-    builder.Services.AddInfrastructure(builder.Configuration);  //Inyectar capa infraestructura
+    BootConsole.Step("2/5", "Inyectando dependencias y escaneando assemblies (Scrutor)...");
+    builder.Services.AddControllers();
+    builder.Services
+        .AddInfrastructure(builder.Configuration, isDev)
+        .AddPersistence(builder.Configuration, isDev, true)
+        .AddApplication(isDev, true);
 
-    builder.Services.AddPersistence(builder.Configuration);     //Inyectar capa persistencia
-    builder.Services.AddApplication();                          //inyectar capa de aplicaci�n
-
+    BootConsole.Step("3/5", "Construyendo ServiceProvider y contenedor...");
     var app = builder.Build();
 
-    app.UseInfrastructure(builder.Configuration); //Habilitar uso de Middlewares
-
-    // Configure the HTTP request pipeline.
-    /*
-    if (app.Environment.IsDevelopment()) { 
-        app.MapOpenApi(); // Swagger solo en dev
-    }
-    */
-
+    BootConsole.Step("4/5", "Configurando Pipeline HTTP y middleware de seguridad...");
+    app.UseInfrastructure(builder.Configuration, isDev);
     app.MapControllers();
+
+    BootConsole.Step("5/5", "¡Servicio desplegado con éxito!");
+
+    Log.Information("Servicio iniciando correctamente...");
     app.Run();
-    
 }
 catch (Exception ex) when (!ex.GetType().Name.Equals("StopTheHostException", StringComparison.Ordinal))
 {
-    Console.WriteLine("Error iniciando el servicio", ex.Message);
+    StartupDiagnostics.LogStartupError(ex);
 }
 finally
-{ 
+{
+    Log.Information(">> Servicio finalizado y recursos liberados <<");
+    Log.CloseAndFlush();
+}
+
+internal static class BootConsole
+{
+    public static void WriteBanner(string name)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"\n » INICIANDO SERVICIO {name}...");
+        Console.ResetColor();
+    }
+
+    public static void Step(string step, string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write($" Ok [{step}] ");
+        Console.ResetColor();
+        Console.WriteLine(msg);
+    }
 }

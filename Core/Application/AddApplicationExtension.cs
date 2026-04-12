@@ -1,34 +1,38 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Application.DependencyInjection;
+using Application.Common.Behaviors; // 👈 Namespace agregado
 
 namespace Application;
 
 public static class AddApplicationExtension
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddApplication(
+        this IServiceCollection services,
+        bool isDev,
+        bool enableVerboseLogs = false,
+        string? filter = "")
     {
         var assembly = typeof(AddApplicationExtension).Assembly;
 
-        // No se necesita, services.AddScoped<Application.Features.Properties.Queries.GetPropertyQueryHandler>(); es redundante
-        // Registra automáticamente todos los Commands, Queries y Handlers
+        // 1. Registro automático de MediatR
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
-        // Aquí podrías agregar FluentValidation si lo usas
+        // 2. Registro de Validaciones (FluentValidation)
         services.AddValidatorsFromAssembly(assembly);
 
-        // Inyectar el PipelineBehavior, este podría analizar si existe algun proceso de validación y ejecutar las reglas respectivas.
+        // 3. Registro del Pipeline de Validación (El "filtro" de seguridad)
         services.AddTransient(
             typeof(IPipelineBehavior<,>),
-            typeof(Application.Common.Behaviors.ValidationBehavior<,>)
+            typeof(ValidationBehavior<,>) // Ya no necesitas la ruta larga
         );
 
-        AddConfigureServices.AddServices(services);
+        // 4. Registro de servicios (Scrutor)
+        // Diagnóstico (isDev & enableVerboseLogs y filtro por nombre filter)
+        AddConfigureServices.AddServices(services, isDev, enableVerboseLogs, filter);
 
         return services;
-
     }
 }

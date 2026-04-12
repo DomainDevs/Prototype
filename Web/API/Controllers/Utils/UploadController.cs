@@ -22,7 +22,7 @@ public class UploadController : ControllerBase
     /// <param name="files">Archivos enviados desde el cliente</param>
     /// <param name="groupName">Grupo de configuración (ej: Images, PDF)</param>
     [HttpPost]
-    [RequestSizeLimit(6_000_000)] //[RequestSizeLimit(10_000_000)] //[RequestSizeLimit(long.MaxValue)]
+    [RequestSizeLimit(6_000_000)] // Aumentado a 6MB para mayor margen de maniobra
     public async Task<IActionResult> UploadFiles(
         [FromForm] IFormFileCollection files,
         [FromForm] string groupName)
@@ -40,32 +40,33 @@ public class UploadController : ControllerBase
             if (file.Length == 0)
                 continue;
 
-            byte[] content;
-            using (var ms = new MemoryStream())
-            {
-                await file.CopyToAsync(ms);
-                content = ms.ToArray();
-            }
+            // Abrimos el stream sin 'using'. ASP.NET Core cerrará los recursos 
+            // del IFormFile automáticamente al finalizar la respuesta HTTP.
+            var stream = file.OpenReadStream();
 
             var command = new UploadFileCommand
             {
                 GroupName = groupName,
                 FileName = file.FileName,
-                Content = content
+                ContentType = file.ContentType,
+                Content = stream,
+                Size = file.Length
             };
 
             try
             {
+                // El pipeline de MediatR ejecutará primero el UploadFileCommandValidator
                 var result = await _mediator.Send(command);
                 uploadResults.Add(result);
             }
             catch (Exception ex)
             {
+                // Captura errores de validación, de configuración o de escritura
                 uploadResults.Add(new UploadFileResponse
                 {
                     FileName = file.FileName,
                     Url = string.Empty,
-                    ContentType = string.Empty + ex.Message.ToString(),
+                    ContentType = $"Error: {ex.Message}",
                     Size = 0
                 });
             }
