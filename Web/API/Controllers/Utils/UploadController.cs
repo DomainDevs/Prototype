@@ -19,7 +19,7 @@ public class UploadController : ControllerBase
     }
 
     [HttpPost]
-    [RequestSizeLimit(6_000_000)]
+    [RequestSizeLimit(9_000_000)]
     public async Task<IActionResult> UploadFiles([FromForm] UploadImageRequestDto dto)
     {
         if (dto.Files == null || dto.Files.Count == 0)
