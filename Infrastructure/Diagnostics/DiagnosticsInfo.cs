@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Diagnostics;
 
-internal sealed record DiagnosticsInfo(
+public sealed record DiagnosticsInfo(
     string Name,
     string Namespace
 );

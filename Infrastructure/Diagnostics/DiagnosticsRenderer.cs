@@ -1,23 +1,23 @@
 ﻿namespace Infrastructure.Diagnostics;
 
-internal static class DiagnosticsRenderer
+public static class DiagnosticsRenderer
 {
     public static void Render(DiagnosticsModel model)
     {
-        if (model.Register.Count == 0)
+        if (model.Items.Count == 0)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("    ▶ [DI] No Register detected.");
+            Console.WriteLine("    ▶ [DI] No items detected.");
             Console.ResetColor();
             return;
         }
 
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("    ▶ [DI] Register Diagnostics:");
+        Console.WriteLine("    ▶ [DI] Diagnostics snapshot:");
 
-        foreach (var repo in model.Register)
+        foreach (var item in model.Items)
         {
-            Console.WriteLine($"       {repo.Name}  ({repo.Namespace})");
+            Console.WriteLine($"       {item.Name} ({item.Namespace})");
         }
 
         Console.ResetColor();

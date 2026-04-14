@@ -1,24 +1,35 @@
-﻿using Infrastructure.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Infrastructure.Diagnostics;
 
 public static class DiagnosticsEngine
 {
-    public static DiagnosticsModel Build(Assembly assembly)
+    public static DiagnosticsModel Build(
+        Assembly assembly,
+        Func<Type, bool>? filter = null)
     {
-        var repos = assembly.GetTypes()
-            .Where(t =>
-                t.IsClass &&
-                !t.IsAbstract &&
-                t.Name.EndsWith("Register"))
+        var types = assembly.GetTypes()
+            .Where(t => t.IsClass && !t.IsAbstract);
+
+        if (filter != null)
+            types = types.Where(filter);
+
+        var items = types
             .Select(t => new DiagnosticsInfo(
-                Name: t.Name,
-                Namespace: t.Namespace ?? "unknown"
-            ))
+                t.Name,
+                t.Namespace ?? "unknown"))
             .OrderBy(x => x.Name)
             .ToList();
 
-        return new DiagnosticsModel(repos);
+        return new DiagnosticsModel(items);
     }
+
+    public static Func<Type, bool> RegisterTypes()
+        => t => t.Name.EndsWith("Register");
+
+    public static Func<Type, bool> RepositoryTypes()
+        => t => t.Name.EndsWith("Repository");
+
+    public static Func<Type, bool> ServiceTypes()
+        => t => t.Name.EndsWith("Service");
 }

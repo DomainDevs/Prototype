@@ -10,10 +10,7 @@ namespace Application;
 public static class AddApplicationExtension
 {
     public static IServiceCollection AddApplication(
-        this IServiceCollection services,
-        bool isDev,
-        bool enableVerboseLogs = false,
-        string? filter = "")
+        this IServiceCollection services)
     {
         var assembly = typeof(AddApplicationExtension).Assembly;
 
@@ -30,7 +27,6 @@ public static class AddApplicationExtension
         );
 
         // 4. Registro de servicios (Scrutor)
-        // Diagnóstico (isDev & enableVerboseLogs y filtro por nombre filter)
         AddConfigureServices.AddServices(services); //
 
         return services;

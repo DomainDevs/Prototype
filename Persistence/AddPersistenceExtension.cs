@@ -15,9 +15,7 @@ public static class AddPersistenceExtension
     /// Registra DataToolkit (librería de conexión) y tus repositorios.
     /// </summary>
     public static IServiceCollection AddPersistence(this IServiceCollection services,
-        IConfiguration config,
-        bool isDev,
-        bool enableVerboseLogs = false
+        IConfiguration config
         )
     {
         // 1. Configuración de motor/conexión

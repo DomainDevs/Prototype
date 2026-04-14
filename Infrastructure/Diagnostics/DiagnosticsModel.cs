@@ -1,5 +1,5 @@
 ﻿namespace Infrastructure.Diagnostics;
 
-internal sealed record DiagnosticsModel(
-    List<DiagnosticsInfo> Register
+public sealed record DiagnosticsModel(
+    List<DiagnosticsInfo> Items
 );

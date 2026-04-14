@@ -13,34 +13,49 @@ try
     BootConsole.WriteBanner("[NAME]");
 
     var builder = WebApplication.CreateBuilder(args);
+
     bool isDev = builder.Environment.IsDevelopment();
     bool enableVerboseLogs = isDev ||
         builder.Configuration.GetValue<bool>("Diagnostics:EnableVerbose");
 
     BootConsole.Step("1/5", "Configurando Host y Serilog...");
-    builder.Host.AddConfigurations().UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
+    builder.Host
+        .AddConfigurations()
+        .UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
 
     BootConsole.Step("2/5", "Inyectando dependencias y escaneando assemblies (Scrutor)...");
+
     builder.Services.AddControllers();
+
     builder.Services
         .AddInfrastructure(builder.Configuration, isDev)
-        .AddPersistence(builder.Configuration, isDev, enableVerboseLogs)
-        .AddApplication(isDev, enableVerboseLogs);
-
-    // snapshot ANTES de Build
-    var snapshot = builder.Services.ToList();
+        .AddPersistence(builder.Configuration)
+        .AddApplication();
 
     BootConsole.Step("3/5", "Construyendo ServiceProvider y contenedor...");
+
     var app = builder.Build();
 
     BootConsole.Step("4/5", "Configurando Pipeline HTTP y middleware de seguridad...");
+
     app.UseInfrastructure(builder.Configuration, isDev);
     app.MapControllers();
 
+    // =========================
+    // DIAGNÓSTICO CORRECTO
+    // =========================
+    if (enableVerboseLogs)
+    {
+        var assembly = typeof(Application.DependencyInjection.AddConfigureServices).Assembly;
+
+        var model = DiagnosticsEngine.Build(assembly);
+        DiagnosticsRenderer.Render(model);
+    }
+
     BootConsole.Step("5/5", "¡Servicio desplegado con éxito!");
 
-    DiagnosticsRenderer.Render(snapshot);
     Log.Information("Servicio iniciando correctamente...");
+
     app.Run();
 }
 catch (Exception ex) when (!ex.GetType().Name.Equals("StopTheHostException", StringComparison.Ordinal))
