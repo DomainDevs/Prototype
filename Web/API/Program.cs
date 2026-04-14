@@ -4,6 +4,7 @@ using Infrastructure;
 using Persistence;
 using Serilog;
 using Infrastructure.Common.Diagnostics;
+using Infrastructure.Diagnostics;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -26,6 +27,9 @@ try
         .AddPersistence(builder.Configuration, isDev, enableVerboseLogs)
         .AddApplication(isDev, enableVerboseLogs);
 
+    // snapshot ANTES de Build
+    var snapshot = builder.Services.ToList();
+
     BootConsole.Step("3/5", "Construyendo ServiceProvider y contenedor...");
     var app = builder.Build();
 
@@ -35,6 +39,7 @@ try
 
     BootConsole.Step("5/5", "¡Servicio desplegado con éxito!");
 
+    DiagnosticsRenderer.Render(snapshot);
     Log.Information("Servicio iniciando correctamente...");
     app.Run();
 }

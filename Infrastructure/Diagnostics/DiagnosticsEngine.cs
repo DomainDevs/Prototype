@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Infrastructure.Diagnostics;
 
-internal static class DiagnosticsEngine
+public static class DiagnosticsEngine
 {
     public static DiagnosticsModel Build(Assembly assembly)
     {
