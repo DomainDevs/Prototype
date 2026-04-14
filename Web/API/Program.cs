@@ -13,6 +13,8 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
     bool isDev = builder.Environment.IsDevelopment();
+    bool enableVerboseLogs = isDev ||
+        builder.Configuration.GetValue<bool>("Diagnostics:EnableVerbose");
 
     BootConsole.Step("1/5", "Configurando Host y Serilog...");
     builder.Host.AddConfigurations().UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
@@ -21,8 +23,8 @@ try
     builder.Services.AddControllers();
     builder.Services
         .AddInfrastructure(builder.Configuration, isDev)
-        .AddPersistence(builder.Configuration, isDev, true)
-        .AddApplication(isDev, true);
+        .AddPersistence(builder.Configuration, isDev, enableVerboseLogs)
+        .AddApplication(isDev, enableVerboseLogs);
 
     BootConsole.Step("3/5", "Construyendo ServiceProvider y contenedor...");
     var app = builder.Build();

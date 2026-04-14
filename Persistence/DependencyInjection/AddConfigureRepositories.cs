@@ -5,60 +5,102 @@ namespace Persistence.DependencyInjection;
 
 internal static class AddConfigureRepositories
 {
-    internal static IServiceCollection AddRepositories(this IServiceCollection services, bool isDev,
-        bool enableVerboseLogs = false) // 🚩 Ver registro de repositorys
+    public static IServiceCollection AddRepositories(
+        this IServiceCollection services,
+        bool enableVerboseLogs = false)
     {
-        // Guardaremos los nombres en una lista local durante el escaneo 
-        // para no tener que buscar luego en todo el IServiceCollection
-        var registeredRepos = new List<string>();
+        var assembly = typeof(AddConfigureRepositories).Assembly;
 
+        // =========================
+        // DI REGISTRATION
+        // =========================
         services.Scan(scan => scan
-            .FromAssemblies(typeof(AddConfigureRepositories).Assembly)
+            .FromAssemblies(assembly)
 
-            // Repositorios
-            .AddClasses(c => c.InNamespaces("Persistence.Repositories").Where(t => t.Name.EndsWith("Repository")))
+            .AddClasses(c => c.InNamespaces("Persistence.Repositories")
+                .Where(t => t.Name.EndsWith("Repository")))
                 .AsImplementedInterfaces()
                 .WithScopedLifetime()
 
-            // Queries
-            .AddClasses(c => c.InNamespaces("Persistence.Queries").Where(t => t.Name.EndsWith("Query")))
+            .AddClasses(c => c.InNamespaces("Persistence.Queries")
+                .Where(t => t.Name.EndsWith("Query")))
                 .AsSelf()
                 .WithScopedLifetime()
         );
 
-        // Optimizamos: Obtenemos solo los que pertenecen a nuestro namespace de Repositorios
-        // Esto es mucho más rápido que filtrar el IServiceCollection completo
-        if (isDev && enableVerboseLogs)
+        // =========================
+        // DIAGNOSTICS
+        // =========================
+        if (enableVerboseLogs)
         {
-            var repoNames = typeof(AddConfigureRepositories).Assembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract &&
-                        t.Namespace == "Persistence.Repositories" &&
-                        t.Name.EndsWith("Repository"))
-            .Select(t => $"I{t.Name}") // Asumimos la convención IRepository
-            .OrderBy(n => n)
-            .ToList();
-
-            PrintDetails(repoNames);
+            var model = RepositoryDiagnosticsEngine.Build(assembly);
+            RepositoryDiagnosticsRenderer.Render(model);
         }
 
         return services;
     }
 
-    private static void PrintDetails(List<string> repos)
+    // =====================================================
+    // ENGINE (PURE LOGIC)
+    // =====================================================
+    private static class RepositoryDiagnosticsEngine
     {
-        if (repos.Count > 0)
+        public static RepositoryDiagnosticsModel Build(Assembly assembly)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("    🧩 [DI] Repositorios registrados automáticamente:");
-            foreach (var r in repos)
-                Console.WriteLine($"       → {r}");
-            Console.ResetColor();
+            var types = assembly.GetTypes()
+                .Where(t => t.IsClass && !t.IsAbstract)
+                .ToArray();
+
+            var repos = types
+                .Where(t =>
+                    t.Namespace == "Persistence.Repositories" &&
+                    t.Name.EndsWith("Repository"))
+                .Select(t => new RepositoryInfo(
+                    Interface: $"I{t.Name}",
+                    Implementation: t.Name))
+                .OrderBy(x => x.Interface)
+                .ToList();
+
+            return new RepositoryDiagnosticsModel(repos);
         }
-        else
+    }
+
+    // =====================================================
+    // RENDERER (OUTPUT LAYER ONLY)
+    // =====================================================
+    private static class RepositoryDiagnosticsRenderer
+    {
+        public static void Render(RepositoryDiagnosticsModel model)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("    ⚠️ [DI] No se detectaron repositorios en el ensamblado.");
+            if (model.Repositories.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("    ▶ [DI] No repositories detected.");
+                Console.ResetColor();
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("    ▶ [DI] Repository registration graph:");
+
+            foreach (var repo in model.Repositories)
+            {
+                Console.WriteLine($"       {repo.Interface} -> {repo.Implementation}");
+            }
+
             Console.ResetColor();
         }
     }
+
+    // =====================================================
+    // MODEL (IMMUTABLE)
+    // =====================================================
+    private sealed record RepositoryDiagnosticsModel(
+        List<RepositoryInfo> Repositories
+    );
+
+    private sealed record RepositoryInfo(
+        string Interface,
+        string Implementation
+    );
 }

@@ -1,4 +1,7 @@
 ﻿{
+  "Diagnostics": {
+    "EnableVerbose": true
+  },
   "Serilog": {
     "MinimumLevel": {
       "Default": "Information",

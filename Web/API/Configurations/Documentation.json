@@ -1,7 +1,7 @@
 {
   "SwaggerSettings": {
     "Enable": true,
-    "Title": "RealState WebSite",
+    "Title": "WebSite",
     "Version1": "v1",
     "Version2": "v2",
     "Description": "Clean Architecture .NET 9.0 WebApi.",

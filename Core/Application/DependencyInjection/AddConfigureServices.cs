@@ -13,76 +13,130 @@ public static class AddConfigureServices
     {
         var assembly = typeof(AddConfigureServices).Assembly;
 
-        // 🚀 Registro con Scrutor: Solo para lo que NO es MediatR/FluentValidation
+        // =========================
+        // DI REGISTRATION
+        // =========================
         services.Scan(scan => scan
             .FromAssemblies(assembly)
 
-            // 1. Servicios tradicionales (clases en carpetas .Services)
             .AddClasses(c => c.InNamespaces("Application.Features")
                 .Where(t => t.Namespace != null && t.Namespace.Contains(".Services")))
                 .AsImplementedInterfaces()
                 .WithScopedLifetime()
 
-            // 2. UseCases (clases que terminan en UseCase)
             .AddClasses(c => c.InNamespaces("Application.UseCase")
                 .Where(t => t.Name.EndsWith("UseCase")))
                 .AsSelf()
                 .WithScopedLifetime()
         );
 
-        // 🔍 Diagnóstico inteligente
+        // =========================
+        // DIAGNOSTICS (DEV ONLY)
+        // =========================
         if (isDev && enableVerboseLogs)
         {
-            PrintApplicationDetails(assembly, filter);
+            var model = DiagnosticsEngine.Build(assembly, filter);
+            DiagnosticsRenderer.Render(model);
         }
 
         return services;
     }
 
-    private static void PrintApplicationDetails(Assembly assembly, 
-        string? filter = "") //filtro de cuales mostrar
+    // =========================================================
+    // ENGINE (PURE LOGIC - NO CONSOLE, NO SIDE EFFECTS)
+    // =========================================================
+    private static class DiagnosticsEngine
     {
-        var types = assembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract)
-            .ToList();
-
-        // Determinamos si aplicamos filtro visual
-        bool hasFilter = !string.IsNullOrWhiteSpace(filter);
-
-        // Categorizamos los tipos
-        var services = types.Where(t => t.Namespace?.Contains(".Services") == true);
-        var useCases = types.Where(t => t.Name.EndsWith("UseCase"));
-        var handlers = types.Where(t => t.Name.EndsWith("Handler"));
-        var validators = types.Where(t => t.Name.EndsWith("Validator"));
-
-        // Aplicamos el filtro de texto solo si el usuario lo proporcionó
-        if (hasFilter)
+        public static DiagnosticsModel Build(Assembly assembly, string? filter)
         {
-            services = services.Where(t => t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase));
-            useCases = useCases.Where(t => t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase));
-            handlers = handlers.Where(t => t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase));
-            validators = validators.Where(t => t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase));
+            var types = assembly.GetTypes()
+                .Where(t => t.IsClass && !t.IsAbstract)
+                .ToArray(); // snapshot (performance)
+
+            var match = CreateMatcher(filter);
+
+            return new DiagnosticsModel(
+                Filter: filter,
+                Groups: new Dictionary<string, List<Type>>
+                {
+                    ["Services"] = Filter(types, t =>
+                        IsService(t) && match(t)),
+
+                    ["UseCases"] = Filter(types, t =>
+                        t.Name.EndsWith("UseCase") && match(t)),
+
+                    ["Handlers"] = Filter(types, t =>
+                        t.Name.EndsWith("Handler") && match(t)),
+
+                    ["Validators"] = Filter(types, t =>
+                        t.Name.EndsWith("Validator") && match(t))
+                }
+            );
         }
 
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        string mode = hasFilter ? $"Filtrando por: '{filter}'" : "Listado completo";
-        Console.WriteLine($"    🔍 [DI] Diagnóstico de Aplicación ({mode}):");
-
-        void PrintGroup(string label, string icon, IEnumerable<Type> items)
+        private static Func<Type, bool> CreateMatcher(string? filter)
         {
-            var list = items.OrderBy(n => n.Name).ToList();
-            if (!list.Any()) return;
+            if (string.IsNullOrWhiteSpace(filter))
+                return _ => true;
 
-            Console.WriteLine($"    {icon} {label}:");
-            foreach (var item in list)
-                Console.WriteLine($"       → {item.Name}");
+            return t =>
+                t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                t.Namespace?.Contains(filter!, StringComparison.OrdinalIgnoreCase) == true;
         }
 
-        PrintGroup("Servicios", "⚙️ ", services);
-        PrintGroup("UseCases", "⚡", useCases);
-        PrintGroup("Handlers (MediatR)", "📨", handlers);
-        PrintGroup("Validadores", "🛡️ ", validators);
+        private static bool IsService(Type t)
+            => t.Namespace?.Contains(".Services") == true;
 
-        Console.ResetColor();
+        private static List<Type> Filter(Type[] types, Func<Type, bool> predicate)
+            => types.Where(predicate).ToList();
     }
+
+    // =========================================================
+    // RENDERER (ONLY OUTPUT LAYER)
+    // =========================================================
+    private static class DiagnosticsRenderer
+    {
+        public static void Render(DiagnosticsModel model)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+
+            var mode = string.IsNullOrWhiteSpace(model.Filter)
+                ? "FULL SCAN"
+                : $"FILTER: '{model.Filter}'";
+
+            Console.WriteLine($"    ▶ [DI] Application Dependency Graph ({mode})");
+
+            foreach (var group in model.Groups)
+                PrintGroup(group.Key, group.Value);
+
+            Console.ResetColor();
+        }
+
+        private static void PrintGroup(string name, List<Type> items)
+        {
+            if (items.Count == 0) return;
+
+            var tag = name switch
+            {
+                "Services" => "[SVC]",
+                "UseCases" => "[UC]",
+                "Handlers" => "[HND]",
+                "Validators" => "[VAL]",
+                _ => "[???]"
+            };
+
+            Console.WriteLine($"    {tag} {name}");
+
+            foreach (var item in items.OrderBy(x => x.Name))
+                Console.WriteLine($"       └─ {item.Name}");
+        }
+    }
+
+    // =========================================================
+    // MODEL (EXTENSIBLE + CLEAN)
+    // =========================================================
+    private sealed record DiagnosticsModel(
+        string? Filter,
+        Dictionary<string, List<Type>> Groups
+    );
 }

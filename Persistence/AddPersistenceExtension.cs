@@ -17,14 +17,14 @@ public static class AddPersistenceExtension
     public static IServiceCollection AddPersistence(this IServiceCollection services,
         IConfiguration config,
         bool isDev,
-        bool enableVerboseLogs = false)
+        bool enableVerboseLogs = false
+        )
     {
         // 1. Configuración de motor/conexión
         services.AddDataToolkit(config);
 
         // 2. Registro de Repositorios 
-        //Visualizar diagnóstico si isDev = true y enableVerboseLogs = true para decidir si realmente imprimimos
-        services.AddRepositories(isDev, enableVerboseLogs);
+        services.AddRepositories(enableVerboseLogs);
 
         return services;
     }
