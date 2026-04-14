@@ -13,7 +13,6 @@ try
     BootConsole.WriteBanner("[NAME]");
 
     var builder = WebApplication.CreateBuilder(args);
-
     bool isDev = builder.Environment.IsDevelopment();
     bool enableVerboseLogs = isDev ||
         builder.Configuration.GetValue<bool>("Diagnostics:EnableVerbose");
@@ -24,35 +23,36 @@ try
         .UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
 
     BootConsole.Step("2/5", "Inyectando dependencias y escaneando assemblies (Scrutor)...");
-
     builder.Services.AddControllers();
-
     builder.Services
         .AddInfrastructure(builder.Configuration, isDev)
         .AddPersistence(builder.Configuration)
         .AddApplication();
 
     BootConsole.Step("3/5", "Construyendo ServiceProvider y contenedor...");
-
     var app = builder.Build();
 
     BootConsole.Step("4/5", "Configurando Pipeline HTTP y middleware de seguridad...");
-
     app.UseInfrastructure(builder.Configuration, isDev);
     app.MapControllers();
 
     // =========================
-    // DIAGNÓSTICO CORRECTO
+    // DIAGNÓSTICO
     // =========================
     if (enableVerboseLogs)
     {
         var assemblies = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a =>
-                a.FullName!.Contains("Application") ||
-                a.FullName!.Contains("Persistence") ||
-                a.FullName!.Contains("Infrastructure"));
+                a.FullName != null &&
+                (a.FullName.Contains("Application") ||
+                 a.FullName.Contains("Persistence") ||
+                 a.FullName.Contains("Infrastructure")))
+            .ToArray();
 
-        var model = DiagnosticsEngine.Build(assemblies);
+        var types = DiagnosticsSnapshot.Capture(assemblies);
+
+        var model = DiagnosticsEngine.Build(types);
+
         DiagnosticsRenderer.Render(model);
     }
 

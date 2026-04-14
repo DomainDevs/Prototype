@@ -11,16 +11,22 @@ public static class DiagnosticsEngine
             t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
             (t.Namespace?.Contains(filter!, StringComparison.OrdinalIgnoreCase) ?? false);
 
-        return new DiagnosticsModel
-        {
-            Filter = filter,
-            Groups = new Dictionary<string, List<Type>>
+        List<DiagnosticsInfo> Map(IEnumerable<Type> source) =>
+            source.Where(Match)
+                  .Select(t => new DiagnosticsInfo(
+                      t.Name,
+                      t.Namespace ?? "unknown"
+                  ))
+                  .ToList();
+
+        return new DiagnosticsModel(
+            new Dictionary<string, List<DiagnosticsInfo>>
             {
-                ["Services"] = types.Where(t => DiagnosticsClassifier.IsService(t) && Match(t)).ToList(),
-                ["UseCases"] = types.Where(t => DiagnosticsClassifier.IsUseCase(t) && Match(t)).ToList(),
-                ["Handlers"] = types.Where(t => DiagnosticsClassifier.IsHandler(t) && Match(t)).ToList(),
-                ["Validators"] = types.Where(t => DiagnosticsClassifier.IsValidator(t) && Match(t)).ToList()
+                ["SRVS"] = Map(types.Where(DiagnosticsClassifier.IsService)),
+                ["UCASE"] = Map(types.Where(DiagnosticsClassifier.IsUseCase)),
+                ["HNDL"] = Map(types.Where(DiagnosticsClassifier.IsHandler)),
+                ["VAL"] = Map(types.Where(DiagnosticsClassifier.IsValidator))
             }
-        };
+        );
     }
 }
