@@ -1,22 +1,22 @@
 ﻿using Infrastructure.Diagnostics;
 using System.Reflection;
 
-internal static class RepositoryDiagnosticsEngine
+internal static class DiagnosticsEngine
 {
-    public static RepositoryDiagnosticsModel Build(Assembly assembly)
+    public static DiagnosticsModel Build(Assembly assembly)
     {
         var repos = assembly.GetTypes()
             .Where(t =>
                 t.IsClass &&
                 !t.IsAbstract &&
-                t.Name.EndsWith("Repository"))
-            .Select(t => new RepositoryInfo(
+                t.Name.EndsWith("Register"))
+            .Select(t => new DiagnosticsInfo(
                 Name: t.Name,
                 Namespace: t.Namespace ?? "unknown"
             ))
             .OrderBy(x => x.Name)
             .ToList();
 
-        return new RepositoryDiagnosticsModel(repos);
+        return new DiagnosticsModel(repos);
     }
 }
