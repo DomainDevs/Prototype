@@ -1,5 +1,7 @@
 ﻿namespace Infrastructure.Diagnostics;
 
-public sealed record DiagnosticsModel(
-    List<DiagnosticsInfo> Items
-);
+public class DiagnosticsModel
+{
+    public string? Filter { get; set; }
+    public Dictionary<string, List<Type>> Groups { get; set; } = new();
+}

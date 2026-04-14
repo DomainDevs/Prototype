@@ -4,20 +4,22 @@ public static class DiagnosticsRenderer
 {
     public static void Render(DiagnosticsModel model)
     {
-        if (model.Items.Count == 0)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("    ▶ [DI] No items detected.");
-            Console.ResetColor();
-            return;
-        }
-
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("    ▶ [DI] Diagnostics snapshot:");
 
-        foreach (var item in model.Items)
+        var mode = string.IsNullOrWhiteSpace(model.Filter)
+            ? "FULL"
+            : $"FILTER: {model.Filter}";
+
+        Console.WriteLine($"▶ DIAGNOSTICS ({mode})");
+
+        foreach (var group in model.Groups)
         {
-            Console.WriteLine($"       {item.Name} ({item.Namespace})");
+            if (!group.Value.Any()) continue;
+
+            Console.WriteLine($"\n[{group.Key}]");
+
+            foreach (var t in group.Value.OrderBy(x => x.Name))
+                Console.WriteLine($"   - {t.Name}");
         }
 
         Console.ResetColor();

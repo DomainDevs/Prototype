@@ -1,35 +1,26 @@
-﻿using System.Reflection;
-
-namespace Infrastructure.Diagnostics;
+﻿namespace Infrastructure.Diagnostics;
 
 public static class DiagnosticsEngine
 {
-    public static DiagnosticsModel Build(
-        Assembly assembly,
-        Func<Type, bool>? filter = null)
+    public static DiagnosticsModel Build(List<Type> types, string? filter = null)
     {
-        var types = assembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract);
+        bool hasFilter = !string.IsNullOrWhiteSpace(filter);
 
-        if (filter != null)
-            types = types.Where(filter);
+        bool Match(Type t) =>
+            !hasFilter ||
+            t.Name.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+            (t.Namespace?.Contains(filter!, StringComparison.OrdinalIgnoreCase) ?? false);
 
-        var items = types
-            .Select(t => new DiagnosticsInfo(
-                t.Name,
-                t.Namespace ?? "unknown"))
-            .OrderBy(x => x.Name)
-            .ToList();
-
-        return new DiagnosticsModel(items);
+        return new DiagnosticsModel
+        {
+            Filter = filter,
+            Groups = new Dictionary<string, List<Type>>
+            {
+                ["Services"] = types.Where(t => DiagnosticsClassifier.IsService(t) && Match(t)).ToList(),
+                ["UseCases"] = types.Where(t => DiagnosticsClassifier.IsUseCase(t) && Match(t)).ToList(),
+                ["Handlers"] = types.Where(t => DiagnosticsClassifier.IsHandler(t) && Match(t)).ToList(),
+                ["Validators"] = types.Where(t => DiagnosticsClassifier.IsValidator(t) && Match(t)).ToList()
+            }
+        };
     }
-
-    public static Func<Type, bool> RegisterTypes()
-        => t => t.Name.EndsWith("Register");
-
-    public static Func<Type, bool> RepositoryTypes()
-        => t => t.Name.EndsWith("Repository");
-
-    public static Func<Type, bool> ServiceTypes()
-        => t => t.Name.EndsWith("Service");
 }

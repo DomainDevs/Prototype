@@ -46,9 +46,13 @@ try
     // =========================
     if (enableVerboseLogs)
     {
-        var assembly = typeof(Application.DependencyInjection.AddConfigureServices).Assembly;
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a =>
+                a.FullName!.Contains("Application") ||
+                a.FullName!.Contains("Persistence") ||
+                a.FullName!.Contains("Infrastructure"));
 
-        var model = DiagnosticsEngine.Build(assembly);
+        var model = DiagnosticsEngine.Build(assemblies);
         DiagnosticsRenderer.Render(model);
     }
 
