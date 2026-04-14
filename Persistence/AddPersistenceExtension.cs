@@ -24,7 +24,7 @@ public static class AddPersistenceExtension
         services.AddDataToolkit(config);
 
         // 2. Registro de Repositorios 
-        services.AddRepositories(enableVerboseLogs);
+        services.AddRepositories(); //enableVerboseLogs
 
         return services;
     }

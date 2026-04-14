@@ -31,7 +31,7 @@ public static class AddApplicationExtension
 
         // 4. Registro de servicios (Scrutor)
         // Diagnóstico (isDev & enableVerboseLogs y filtro por nombre filter)
-        AddConfigureServices.AddServices(services, isDev, enableVerboseLogs, filter);
+        AddConfigureServices.AddServices(services); //
 
         return services;
     }
