@@ -1,6 +1,8 @@
 ﻿using Infrastructure.Diagnostics;
 using System.Reflection;
 
+namespace Infrastructure.Diagnostics;
+
 internal static class DiagnosticsEngine
 {
     public static DiagnosticsModel Build(Assembly assembly)
