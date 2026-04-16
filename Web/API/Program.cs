@@ -57,7 +57,6 @@ try
     }
 
     BootConsole.Step("5/5", "¡Servicio desplegado con éxito!");
-
     Log.Information("Servicio iniciando correctamente...");
 
     app.Run();

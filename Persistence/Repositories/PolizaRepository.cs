@@ -1,33 +1,30 @@
 ﻿using DataToolkit.Library.Common;
-using DataToolkit.Library.Sql;
+using DataToolkit.Library.UnitOfWorkLayer;
 using Domain.Entities;
 using Domain.Interfaces;
 using Persistence.Queries;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Persistence.Repositories;
 
-//RESPONSABILIDAD: solo ejecuta SQL.
 public class PolizaRepository : IPolizaRepository
 {
-    private readonly ISqlExecutor _sqlExecutor;
+    private readonly IUnitOfWork _uow;
     private readonly GetPolizaCompletaQuery _queryBuilder;
 
-    public PolizaRepository(ISqlExecutor sqlExecutor, GetPolizaCompletaQuery queryBuilder)
+    public PolizaRepository(IUnitOfWork uow, GetPolizaCompletaQuery queryBuilder)
     {
-        _sqlExecutor = sqlExecutor;
+        _uow = uow;
         _queryBuilder = queryBuilder;
     }
 
-    public async Task<Polizas?> GetPolizaCompletaAsync(
-        int idPv,
-        int? codRiesgo = null
-        )
-
+    public async Task<Polizas?> GetPolizaCompletaAsync(int idPv, int? codRiesgo = null)
     {
-        // 1️⃣ Obtener SQL desde el Query Object
-        string sql = _queryBuilder.BuildSql(idPv, codRiesgo, true);
+        // 1️⃣ Construir SQL pasando el Fluent que vive en el UnitOfWork
+        // Asumiendo que tu IUnitOfWork expone una propiedad o método para obtener el Fluent
+        string sql = _queryBuilder.BuildSql(_uow.Fluent, idPv, codRiesgo);
 
         // 2️⃣ Configurar MultiMapRequest
         var request = new MultiMapRequest
@@ -35,28 +32,23 @@ public class PolizaRepository : IPolizaRepository
             Sql = sql,
             Types = new[] { typeof(Polizas), typeof(PolizaExt), typeof(PolizaRiesgos), typeof(PolizaCoberturas) },
             SplitOn = "Pe_Id_pv,Pr_Cod_Riesgo,Pc_Cod_Cobertura",
-            Parameters = new { IdPv = idPv },
+            Parameters = new { IdPv = idPv, CodRiesgo = codRiesgo },
             MapFunction = objects =>
             {
-                // Aquí haces el mapeo de objetos al modelo final
-                Polizas poliza = (Polizas)objects[0];
-                PolizaExt ext = (PolizaExt)objects[1];
-                PolizaRiesgos riesgo = (PolizaRiesgos)objects[2];
-                PolizaCoberturas cobertura = (PolizaCoberturas)objects[3];
+                var poliza = (Polizas)objects[0];
+                poliza.PolizaExt = (PolizaExt)objects[1];
 
-                // Por ejemplo, agregar los hijos al padre
-                poliza.PolizaExt = ext;
-                riesgo.PolizaCoberturas = new List<PolizaCoberturas> { cobertura };
+                var riesgo = (PolizaRiesgos)objects[2];
+                if (objects[3] is PolizaCoberturas cobertura)
+                    riesgo.PolizaCoberturas = new List<PolizaCoberturas> { cobertura };
+
                 poliza.PolizaRiesgos = new List<PolizaRiesgos> { riesgo };
-
                 return poliza;
             }
         };
 
-        // 3️⃣ Ejecutar mapeo múltiple
-        var polizas = await _sqlExecutor.FromSqlMultiMapAsync<Polizas>(request);
-
-        // 4️⃣ Retornar el primer resultado (solo nos interesa uno)
-        return polizas.FirstOrDefault();
+        // 3️⃣ Ejecución centralizada
+        var result = await _uow.Sql.FromSqlMultiMapAsync<Polizas>(request);
+        return result.FirstOrDefault();
     }
 }
